@@ -11,7 +11,7 @@
     
     <title>🎖 Badge &#8212; Mergify  documentation</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="_bootstrap/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
@@ -24,7 +24,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
+  <script src="_bootstrap/bootstrap.min.js"></script>
   <script type="text/javascript" src="_static/mergify.js"></script>
 
   <script>
@@ -127,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="actions.html#dismiss-reviews">dismiss_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actions.html#label">label</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actions.html#merge">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#queue">queue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actions.html#request-reviews">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actions.html#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actions.html#update">update</a></li>
@@ -138,6 +139,13 @@
 <li class="toctree-l2"><a class="reference internal" href="commands.html#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commands.html#backport">backport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commands.html#refresh">refresh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Queue Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#the-merge-train">The Merge Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#working-with-queue-rules">Working with Queue Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#queue-rule-parameters">Queue Rule Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a><ul>
@@ -161,6 +169,7 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#flexible-reviewers-assignment">👀 Flexible Reviewers Assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#running-ci-pipelines-automatically">💬 Running CI pipelines automatically</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#enforcing-pull-request-guidelines">📜 Enforcing Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#updating-pr-for-linear-history">🐍 Updating PR for linear history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#bots">🤖 Bots</a></li>
 </ul>
 </li>

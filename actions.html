@@ -11,7 +11,7 @@
     
     <title>🚀 Actions &#8212; Mergify  documentation</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="_bootstrap/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
@@ -24,7 +24,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
+  <script src="_bootstrap/bootstrap.min.js"></script>
   <script type="text/javascript" src="_static/mergify.js"></script>
 
   <script>
@@ -127,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#dismiss-reviews">dismiss_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#label">label</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queue">queue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-reviews">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update">update</a></li>
@@ -138,6 +139,13 @@
 <li class="toctree-l2"><a class="reference internal" href="commands.html#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commands.html#backport">backport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commands.html#refresh">refresh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Queue Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#the-merge-train">The Merge Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#working-with-queue-rules">Working with Queue Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#queue-rule-parameters">Queue Rule Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a><ul>
@@ -161,6 +169,7 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#flexible-reviewers-assignment">👀 Flexible Reviewers Assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#running-ci-pipelines-automatically">💬 Running CI pipelines automatically</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#enforcing-pull-request-guidelines">📜 Enforcing Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#updating-pr-for-linear-history">🐍 Updating PR for linear history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -445,9 +454,10 @@ itself.</p>
 that is the branch which hosts the commits. This only works if the branch is
 stored in the same repository that the pull request target, i.e., if the pull
 request comes from the same repository and not from a fork.</p>
-<p>This action takes no configuration options. The action will only happen if and
-when the pull request is closed or merged: you can decide what suits you best
-using <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">🎯 Conditions</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The action will only happen if and when the pull request is closed or merged.</p>
+</div>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -733,8 +743,66 @@ the push, while it actually has been executed by Mergify.</p></li>
 </ul>
 </div>
 </div>
+<div class="section" id="queue">
+<span id="request-reviews-action"></span><h2>queue<a class="headerlink" href="#queue" title="Permalink to this headline"> 🔗</a></h2>
+<p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div>
+<div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-info">Beta feature ⚙️</span></a></div></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">queue</span></code> action moves the pull request into one of the merge queue defined
+in <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code>. The <code class="docutils literal notranslate"><span class="pre">queue</span></code> action takes the following parameter:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Name</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Value Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>The name of the merge queue where to move the pull request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code></p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>Mergify can impersonate a GitHub user to merge pull request.
+If no <code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code> is set, Mergify will merge the pull request
+itself. The user account <strong>must</strong> have already been
+logged in Mergify dashboard once and have <strong>write</strong> or <strong>maintain</strong> permission.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
+<td><p>1 &lt;= integer &lt;= 10000 or <code class="docutils literal notranslate"><span class="pre">low</span></code> or <code class="docutils literal notranslate"><span class="pre">medium</span></code> or <code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
+<td><p>This sets the priority of the pull request in the queued. The pull
+request with the highest priority is merged first.
+<code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> are aliases for <code class="docutils literal notranslate"><span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">2000</span></code>, <code class="docutils literal notranslate"><span class="pre">3000</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">commit_message</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<td><p>Defines what commit message to use when merging using the <code class="docutils literal notranslate"><span class="pre">squash</span></code> or
+<code class="docutils literal notranslate"><span class="pre">merge</span></code> method. Possible values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code> to use the default commit message provided by GitHub
+or defined in the pull request body (see <a class="reference internal" href="#commit-message"><span class="std std-ref">Defining the Commit Message</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title+body</span></code> means to use the title and body from the pull request
+itself as the commit message. The pull request number will be added to
+end of the title.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="request-reviews">
-<span id="request-reviews-action"></span><h2>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline"> 🔗</a></h2>
+<h2>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">request_reviews</span></code> action requests reviews from users for the pull
 request.</p>
 <table class="colwidths-given docutils align-default">
@@ -797,12 +865,12 @@ Weight must be between 1 and 65535 included.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
 <td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>For certain actions, such as rebasing branches, Mergify has to
 impersonate a GitHub user. You can specify the account to use with this
-option. If no <code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code> is set, Mergify picks randomly one of the
+option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
 organization users instead. The user account <strong>must</strong> have already been
 logged in Mergify dashboard once.</p></td>
 </tr>
@@ -813,10 +881,21 @@ logged in Mergify dashboard once.</p></td>
 <p>Be aware that rebasing force-pushes the pull request head branch: any change
 done to that branch while Mergify is rebasing will be lost.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the repository is bigger than 512 MB, the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action is only
+available for <a class="reference external" href="https://mergify.io/pricing">Essential and Premium  Plan subscribers</a>.
+<div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan feature 💪</span></a></div>
+<div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
+</div>
 </div>
 <div class="section" id="update">
 <span id="update-action"></span><h2>update<a class="headerlink" href="#update" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">update</span></code> action updates the pull request against its base branch.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">actions</span><span class="p">:</span>
+  <span class="nt">update</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="post-check">
 <h2>post_check<a class="headerlink" href="#post-check" title="Permalink to this headline"> 🔗</a></h2>

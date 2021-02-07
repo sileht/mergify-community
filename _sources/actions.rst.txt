@@ -232,9 +232,9 @@ that is the branch which hosts the commits. This only works if the branch is
 stored in the same repository that the pull request target, i.e., if the pull
 request comes from the same repository and not from a fork.
 
-This action takes no configuration options. The action will only happen if and
-when the pull request is closed or merged: you can decide what suits you best
-using :ref:`Conditions`.
+.. note::
+
+   The action will only happen if and when the pull request is closed or merged.
 
 .. list-table::
    :header-rows: 1
@@ -511,6 +511,54 @@ Using the ``rebase`` method for the strict merge has many drawbacks:
 
 .. _request_reviews action:
 
+queue
+=====
+
+|premium plan tag|
+|beta tag|
+
+The ``queue`` action moves the pull request into one of the merge queue defined
+in ``queue_rules``. The ``queue`` action takes the following parameter:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 1 1 1 3
+
+   * - Key Name
+     - Value Type
+     - Default
+     - Value Description
+   * - ``name``
+     - string
+     -
+     - The name of the merge queue where to move the pull request.
+   * - ``merge_bot_account``
+     - string
+     -
+     - Mergify can impersonate a GitHub user to merge pull request.
+       If no ``merge_bot_account`` is set, Mergify will merge the pull request
+       itself. The user account **must** have already been
+       logged in Mergify dashboard once and have **write** or **maintain** permission.
+   * - ``priority``
+     - 1 <= integer <= 10000 or ``low`` or ``medium`` or ``high``
+     - ``medium``
+     - This sets the priority of the pull request in the queued. The pull
+       request with the highest priority is merged first.
+       ``low``, ``medium``, ``high`` are aliases for ``1000``, ``2000``, ``3000``.
+   * - ``commit_message``
+     - string
+     - ``default``
+     - Defines what commit message to use when merging using the ``squash`` or
+       ``merge`` method. Possible values are:
+
+       * ``default`` to use the default commit message provided by GitHub
+         or defined in the pull request body (see :ref:`commit message`).
+
+       * ``title+body`` means to use the title and body from the pull request
+         itself as the commit message. The pull request number will be added to
+         end of the title.
+
+
 request_reviews
 ===============
 
@@ -563,12 +611,12 @@ The ``rebase`` action will rebase the pull request against its base branch.
     - Default
     - Value Description
 
-  * - ``update_bot_account``
+  * - ``bot_account``
     - :ref:`data type template`
     -
     - For certain actions, such as rebasing branches, Mergify has to
       impersonate a GitHub user. You can specify the account to use with this
-      option. If no ``update_bot_account`` is set, Mergify picks randomly one of the
+      option. If no ``bot_account`` is set, Mergify picks randomly one of the
       organization users instead. The user account **must** have already been
       logged in Mergify dashboard once.
 
@@ -577,12 +625,24 @@ The ``rebase`` action will rebase the pull request against its base branch.
    Be aware that rebasing force-pushes the pull request head branch: any change
    done to that branch while Mergify is rebasing will be lost.
 
+.. warning::
+
+   If the repository is bigger than 512 MB, the ``rebase`` action is only
+   available for `Essential and Premium  Plan subscribers <https://mergify.io/pricing>`_.
+   |essential plan tag|
+   |premium plan tag|
+
 .. _update action:
 
 update
 ======
 
 The ``update`` action updates the pull request against its base branch.
+
+.. code-block:: yaml
+
+    actions:
+      update: {}
 
 
 post_check
