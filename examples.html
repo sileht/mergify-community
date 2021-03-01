@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
 
   
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -42,7 +43,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="🎖 Badge" href="badge.html" />
-    <link rel="prev" title="🔀 Delving into the Merge Action" href="merge-action.html" /> 
+    <link rel="prev" title="🔀 Merge Queues" href="queues.html" /> 
   </head><body>
 <div class="body-container">
   <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
@@ -83,8 +84,8 @@
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-      <a href="merge-action.html" title="Previous Chapter: 🔀 Delving into the Merge Action" class="btn btn-primary" role="button" accesskey="P">
-        &laquo; 🔀 Delving int...
+      <a href="queues.html" title="Previous Chapter: 🔀 Merge Queues" class="btn btn-primary" role="button" accesskey="P">
+        &laquo; 🔀 Merge Queues
       </a>
       <a href="badge.html" title="Next Chapter: 🎖 Badge" class="btn btn-primary" role="button" accesskey="N">
         🎖 Badge &raquo;
@@ -118,22 +119,22 @@
 <li class="toctree-l2"><a class="reference internal" href="conditions.html#about-status-checks">About Status Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="actions.html">🚀 Actions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#assign">assign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#backport">backport</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#copy">copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#comment">comment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#review">review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#close">close</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#delete-head-branch">delete_head_branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#dismiss-reviews">dismiss_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#label">label</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#merge">merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#queue">queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#request-reviews">request_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#rebase">rebase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#update">update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#post-check">post_check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions/index.html">🚀 Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions/assign.html">assign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/backport.html">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/close.html">close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/comment.html">comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/delete_head_branch.html">delete_head_branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/dismiss_reviews.html">dismiss_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/label.html">label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/merge.html">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/post_check.html">post_check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/queue.html">queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/rebase.html">rebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/request_reviews.html">request_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/review.html">review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/update.html">update</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">⚙️ Commands</a><ul>
@@ -143,16 +144,11 @@
 <li class="toctree-l2"><a class="reference internal" href="commands.html#refresh">refresh</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Queue Rules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Merge Queues</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#the-merge-train">The Merge Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="queues.html#working-with-queue-rules">Working with Queue Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#configuring-the-merge-queues">Configuring the Merge Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#queue-rule-parameters">Queue Rule Parameters</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#strict-merge">Strict Merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#git-merge-workflow-and-mergify-equivalent-configuration">Git merge workflow and Mergify equivalent configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">🧪 Example Rules</a><ul>
@@ -171,7 +167,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#flexible-reviewers-assignment">👀 Flexible Reviewers Assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-ci-pipelines-automatically">💬 Running CI pipelines automatically</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#enforcing-pull-request-guidelines">📜 Enforcing Pull Request Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#updating-pr-for-linear-history">🐍 Updating PR for linear history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -204,27 +199,26 @@ labels, files, etc.</p>
 and cover many common use cases.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#automatic-merge-when-ci-works-and-approving-reviews" id="id7">✅ Automatic Merge when CI works and approving reviews</a></p></li>
-<li><p><a class="reference internal" href="#using-regular-expressions" id="id8">🌀 Using Regular Expressions</a></p></li>
-<li><p><a class="reference internal" href="#merging-based-on-modified-files" id="id9">🗂 Merging based on Modified Files</a></p></li>
-<li><p><a class="reference internal" href="#using-labels-to-backport-pull-requests" id="id10">👩‍🔧 Using Labels to Backport Pull-Requests</a></p></li>
-<li><p><a class="reference internal" href="#deleting-merged-branch" id="id11">✂️ Deleting Merged Branch</a></p></li>
-<li><p><a class="reference internal" href="#less-strict-rules-for-stable-branches" id="id12">🏖 Less Strict Rules for Stable Branches</a></p></li>
-<li><p><a class="reference internal" href="#using-labels-to-enable-disable-merge" id="id13">🎬 Using Labels to Enable/Disable Merge</a></p></li>
-<li><p><a class="reference internal" href="#using-labels-to-prioritize-merge" id="id14">⚡️ Using Labels to Prioritize Merge</a></p></li>
-<li><p><a class="reference internal" href="#removing-stale-reviews" id="id15">🥶 Removing Stale Reviews</a></p></li>
-<li><p><a class="reference internal" href="#require-all-requested-reviews-to-be-approved" id="id16">🙅️ Require All Requested Reviews to Be Approved</a></p></li>
-<li><p><a class="reference internal" href="#welcoming-your-contributors" id="id17">💌 Welcoming your Contributors</a></p></li>
-<li><p><a class="reference internal" href="#request-for-action" id="id18">🤜 Request for Action</a></p></li>
-<li><p><a class="reference internal" href="#flexible-reviewers-assignment" id="id19">👀 Flexible Reviewers Assignment</a></p></li>
-<li><p><a class="reference internal" href="#running-ci-pipelines-automatically" id="id20">💬 Running CI pipelines automatically</a></p></li>
-<li><p><a class="reference internal" href="#enforcing-pull-request-guidelines" id="id21">📜 Enforcing Pull Request Guidelines</a></p></li>
-<li><p><a class="reference internal" href="#updating-pr-for-linear-history" id="id22">🐍 Updating PR for linear history</a></p></li>
+<li><p><a class="reference internal" href="#automatic-merge-when-ci-works-and-approving-reviews" id="id8">✅ Automatic Merge when CI works and approving reviews</a></p></li>
+<li><p><a class="reference internal" href="#using-regular-expressions" id="id9">🌀 Using Regular Expressions</a></p></li>
+<li><p><a class="reference internal" href="#merging-based-on-modified-files" id="id10">🗂 Merging based on Modified Files</a></p></li>
+<li><p><a class="reference internal" href="#using-labels-to-backport-pull-requests" id="id11">👩‍🔧 Using Labels to Backport Pull-Requests</a></p></li>
+<li><p><a class="reference internal" href="#deleting-merged-branch" id="id12">✂️ Deleting Merged Branch</a></p></li>
+<li><p><a class="reference internal" href="#less-strict-rules-for-stable-branches" id="id13">🏖 Less Strict Rules for Stable Branches</a></p></li>
+<li><p><a class="reference internal" href="#using-labels-to-enable-disable-merge" id="id14">🎬 Using Labels to Enable/Disable Merge</a></p></li>
+<li><p><a class="reference internal" href="#using-labels-to-prioritize-merge" id="id15">⚡️ Using Labels to Prioritize Merge</a></p></li>
+<li><p><a class="reference internal" href="#removing-stale-reviews" id="id16">🥶 Removing Stale Reviews</a></p></li>
+<li><p><a class="reference internal" href="#require-all-requested-reviews-to-be-approved" id="id17">🙅️ Require All Requested Reviews to Be Approved</a></p></li>
+<li><p><a class="reference internal" href="#welcoming-your-contributors" id="id18">💌 Welcoming your Contributors</a></p></li>
+<li><p><a class="reference internal" href="#request-for-action" id="id19">🤜 Request for Action</a></p></li>
+<li><p><a class="reference internal" href="#flexible-reviewers-assignment" id="id20">👀 Flexible Reviewers Assignment</a></p></li>
+<li><p><a class="reference internal" href="#running-ci-pipelines-automatically" id="id21">💬 Running CI pipelines automatically</a></p></li>
+<li><p><a class="reference internal" href="#enforcing-pull-request-guidelines" id="id22">📜 Enforcing Pull Request Guidelines</a></p></li>
 <li><p><a class="reference internal" href="#bots" id="id23">🤖 Bots</a></p></li>
 </ul>
 </div>
 <div class="section" id="automatic-merge-when-ci-works-and-approving-reviews">
-<h2><a class="toc-backref" href="#id7">✅ Automatic Merge when CI works and approving reviews</a><a class="headerlink" href="#automatic-merge-when-ci-works-and-approving-reviews" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id8">✅ Automatic Merge when CI works and approving reviews</a><a class="headerlink" href="#automatic-merge-when-ci-works-and-approving-reviews" title="Permalink to this headline"> 🔗</a></h2>
 <p>This is a classic! That rule enables Mergify automatic merge when the
 continuous integration system validates the pull request and a human reviewed
 it.</p>
@@ -288,7 +282,7 @@ use:</p>
 </div>
 </div>
 <div class="section" id="using-regular-expressions">
-<h2><a class="toc-backref" href="#id8">🌀 Using Regular Expressions</a><a class="headerlink" href="#using-regular-expressions" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id9">🌀 Using Regular Expressions</a><a class="headerlink" href="#using-regular-expressions" title="Permalink to this headline"> 🔗</a></h2>
 <p>You can use regular expressions in the <a class="reference internal" href="configuration.html#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>, associated with flags to enhance it.
 To match a pull request title which contains the “WIP” statement, ignoring the case, you can write:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -315,7 +309,7 @@ if at least one Python file is modified and if it passes Circle CI’s validatio
 </div>
 </div>
 <div class="section" id="merging-based-on-modified-files">
-<h2><a class="toc-backref" href="#id9">🗂 Merging based on Modified Files</a><a class="headerlink" href="#merging-based-on-modified-files" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id10">🗂 Merging based on Modified Files</a><a class="headerlink" href="#merging-based-on-modified-files" title="Permalink to this headline"> 🔗</a></h2>
 <p>You could decide to only merge some pull requests based on the files they
 touch. You can use the <code class="docutils literal notranslate"><span class="pre">files</span></code> attribute to access the modified file list and
 <code class="docutils literal notranslate"><span class="pre">#files</span></code> to access the number of files.</p>
@@ -349,9 +343,9 @@ the pull requests when the CI passes and when all the files are inside the
 </div>
 </div>
 <div class="section" id="using-labels-to-backport-pull-requests">
-<h2><a class="toc-backref" href="#id10">👩‍🔧 Using Labels to Backport Pull-Requests</a><a class="headerlink" href="#using-labels-to-backport-pull-requests" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id11">👩‍🔧 Using Labels to Backport Pull-Requests</a><a class="headerlink" href="#using-labels-to-backport-pull-requests" title="Permalink to this headline"> 🔗</a></h2>
 <p>Copying pull requests to a maintenance  branch is something common as explained
-in <a class="reference internal" href="actions.html#backport-action"><span class="std std-ref">backport</span></a>. In order to elect a pull request to be backported,
+in <a class="reference internal" href="actions/backport.html#backport-action"><span class="std std-ref">backport</span></a>. In order to elect a pull request to be backported,
 it’s common to use a label. You could write a rule such as:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">backport patches to stable branch</span>
@@ -367,7 +361,7 @@ it’s common to use a label. You could write a rule such as:</p>
 <p>You could also manually trigger them using the <a class="reference internal" href="commands.html#backport-command"><span class="std std-ref">backport</span></a> command.</p>
 </div>
 <div class="section" id="deleting-merged-branch">
-<h2><a class="toc-backref" href="#id11">✂️ Deleting Merged Branch</a><a class="headerlink" href="#deleting-merged-branch" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id12">✂️ Deleting Merged Branch</a><a class="headerlink" href="#deleting-merged-branch" title="Permalink to this headline"> 🔗</a></h2>
 <p>Some users create pull request from the same repository by using different
 branches — rather than creating a pull request from a fork. That’s fine, but it
 tends to leave a lot of useless branch behind when the pull request is merged.</p>
@@ -382,7 +376,7 @@ tends to leave a lot of useless branch behind when the pull request is merged.</
 </div>
 </div>
 <div class="section" id="less-strict-rules-for-stable-branches">
-<h2><a class="toc-backref" href="#id12">🏖 Less Strict Rules for Stable Branches</a><a class="headerlink" href="#less-strict-rules-for-stable-branches" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id13">🏖 Less Strict Rules for Stable Branches</a><a class="headerlink" href="#less-strict-rules-for-stable-branches" title="Permalink to this headline"> 🔗</a></h2>
 <p>Some projects like having easier review requirements for maintenance branches.
 That usually means having e.g. 2 review requested for merging into <code class="docutils literal notranslate"><span class="pre">master</span></code>,
 but only one for a stable branch — since those pull request are essentially
@@ -409,7 +403,7 @@ backport from <code class="docutils literal notranslate"><span class="pre">maste
 </div>
 </div>
 <div class="section" id="using-labels-to-enable-disable-merge">
-<h2><a class="toc-backref" href="#id13">🎬 Using Labels to Enable/Disable Merge</a><a class="headerlink" href="#using-labels-to-enable-disable-merge" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id14">🎬 Using Labels to Enable/Disable Merge</a><a class="headerlink" href="#using-labels-to-enable-disable-merge" title="Permalink to this headline"> 🔗</a></h2>
 <p>Some developers are not comfortable with fully automatic merge — they like
 having a final word before merging the code. In that case, you can add a
 condition using a <a class="reference external" href="https://help.github.com/articles/labeling-issues-and-pull-requests/">label</a>:</p>
@@ -447,12 +441,12 @@ won’t be merged, even if approved by 2 contributors and having Travis CI
 passing.</p>
 </div>
 <div class="section" id="using-labels-to-prioritize-merge">
-<h2><a class="toc-backref" href="#id14">⚡️ Using Labels to Prioritize Merge</a><a class="headerlink" href="#using-labels-to-prioritize-merge" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id15">⚡️ Using Labels to Prioritize Merge</a><a class="headerlink" href="#using-labels-to-prioritize-merge" title="Permalink to this headline"> 🔗</a></h2>
 <p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
-<p>When <code class="docutils literal notranslate"><span class="pre">smart</span></code> <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled and many pull requests are
+<p>When <code class="docutils literal notranslate"><span class="pre">smart</span></code> <a class="reference internal" href="actions/merge.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled and many pull requests are
 waiting to be merged, some of them might be more urgent. In that case, you
 could add a condition using a <a class="reference external" href="https://help.github.com/articles/labeling-issues-and-pull-requests/">label</a> and
-configure the priority option of <a class="reference internal" href="actions.html#merge-action"><span class="std std-ref">merge</span></a>:</p>
+configure the priority option of <a class="reference internal" href="actions/merge.html#merge-action"><span class="std std-ref">merge</span></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge of 🚑 hotfix (high priority)</span>
     <span class="nt">conditions</span><span class="p">:</span>
@@ -494,7 +488,7 @@ requests with the label <code class="docutils literal notranslate"><span class="
 from <cite>dependabot</cite> will always be merged last.</p>
 </div>
 <div class="section" id="removing-stale-reviews">
-<h2><a class="toc-backref" href="#id15">🥶 Removing Stale Reviews</a><a class="headerlink" href="#removing-stale-reviews" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id16">🥶 Removing Stale Reviews</a><a class="headerlink" href="#removing-stale-reviews" title="Permalink to this headline"> 🔗</a></h2>
 <p>When a pull request is updated, GitHub does not remove the (possibly) outdated
 reviews approvals or changes request. It’s a good idea to remove them as soon
 as the pull request gets updated with new commits.</p>
@@ -520,7 +514,7 @@ trusted, even if they update their code:</p>
 </div>
 </div>
 <div class="section" id="require-all-requested-reviews-to-be-approved">
-<h2><a class="toc-backref" href="#id16">🙅️ Require All Requested Reviews to Be Approved</a><a class="headerlink" href="#require-all-requested-reviews-to-be-approved" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id17">🙅️ Require All Requested Reviews to Be Approved</a><a class="headerlink" href="#require-all-requested-reviews-to-be-approved" title="Permalink to this headline"> 🔗</a></h2>
 <p>If all requested reviews have been approved, then the number of
 <code class="docutils literal notranslate"><span class="pre">review-requested</span></code>, <code class="docutils literal notranslate"><span class="pre">changes-requested-reviews-by</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">commented-reviews-by</span></code> should all be 0. You also want to make sure there’s at
@@ -541,7 +535,7 @@ least one positive review, obviously.</p>
 that would prevent the merge.</p>
 </div>
 <div class="section" id="welcoming-your-contributors">
-<h2><a class="toc-backref" href="#id17">💌 Welcoming your Contributors</a><a class="headerlink" href="#welcoming-your-contributors" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id18">💌 Welcoming your Contributors</a><a class="headerlink" href="#welcoming-your-contributors" title="Permalink to this headline"> 🔗</a></h2>
 <p>When somebody that’s not part of your team creates a pull requests, it might be
 great to give him a few hints about what to expect next. You could write him a
 little message.</p>
@@ -558,7 +552,7 @@ little message.</p>
 </div>
 </div>
 <div class="section" id="request-for-action">
-<h2><a class="toc-backref" href="#id18">🤜 Request for Action</a><a class="headerlink" href="#request-for-action" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id19">🤜 Request for Action</a><a class="headerlink" href="#request-for-action" title="Permalink to this headline"> 🔗</a></h2>
 <p>If any event that requires the author of the pull request to edit its pull
 request happen, you could write a rule that says something about it.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -586,7 +580,7 @@ to your contributor:</p>
 </div>
 </div>
 <div class="section" id="flexible-reviewers-assignment">
-<h2><a class="toc-backref" href="#id19">👀 Flexible Reviewers Assignment</a><a class="headerlink" href="#flexible-reviewers-assignment" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id20">👀 Flexible Reviewers Assignment</a><a class="headerlink" href="#flexible-reviewers-assignment" title="Permalink to this headline"> 🔗</a></h2>
 <p>You can assign people for review based on any criteria you like. A classic is
 to use the name of modified files to do it:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -614,7 +608,7 @@ to use the name of modified files to do it:</p>
 </div>
 </div>
 <div class="section" id="running-ci-pipelines-automatically">
-<h2><a class="toc-backref" href="#id20">💬 Running CI pipelines automatically</a><a class="headerlink" href="#running-ci-pipelines-automatically" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id21">💬 Running CI pipelines automatically</a><a class="headerlink" href="#running-ci-pipelines-automatically" title="Permalink to this headline"> 🔗</a></h2>
 <p>Some continuous integration systems allow you to trigger jobs by commenting on
 the pull request. For example, Microsoft Azure allows that using
 the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&amp;tabs=yaml#comment-triggers">/AzurePipelines command</a>.
@@ -634,7 +628,7 @@ request.</p>
 </div>
 </div>
 <div class="section" id="enforcing-pull-request-guidelines">
-<h2><a class="toc-backref" href="#id21">📜 Enforcing Pull Request Guidelines</a><a class="headerlink" href="#enforcing-pull-request-guidelines" title="Permalink to this headline"> 🔗</a></h2>
+<h2><a class="toc-backref" href="#id22">📜 Enforcing Pull Request Guidelines</a><a class="headerlink" href="#enforcing-pull-request-guidelines" title="Permalink to this headline"> 🔗</a></h2>
 <blockquote>
 <div><p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
 </div></blockquote>
@@ -663,23 +657,6 @@ request.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="updating-pr-for-linear-history">
-<h2><a class="toc-backref" href="#id22">🐍 Updating PR for linear history</a><a class="headerlink" href="#updating-pr-for-linear-history" title="Permalink to this headline"> 🔗</a></h2>
-<p>As GitHub supports linear history in pull request settings, it is very handy to use a rule
-to keep your pull requests up-to-date. As you do not want to trigger your CI too often by always
-re-running it on every pull request — especially when there is still work in progress — you can
-limit this action to labeled pull requests.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic update for PR marked as “Ready-to-Go“</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-conflict</span> <span class="c1"># skip PRs with conflicts</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-draft</span> <span class="c1"># filter-out GH draft PRs</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=&quot;Ready-to-Go&quot;</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">update</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="bots">
 <h2><a class="toc-backref" href="#id23">🤖 Bots</a><a class="headerlink" href="#bots" title="Permalink to this headline"> 🔗</a></h2>
 <p>Some pull requests might be created automatically by other tools, such as the
@@ -692,8 +669,11 @@ integration system validates them. <code class="docutils literal notranslate"><s
 CI check name here — adjust it to whatever you use.</p>
 <div class="section" id="dependabot">
 <h3>Dependabot<a class="headerlink" href="#dependabot" title="Permalink to this headline"> 🔗</a></h3>
-<p><a class="reference external" href="https://dependabot.io">Dependabot</a> sends automatic security update of your
-project dependencies.</p>
+<p><a class="reference external" href="https://github.com/features/security">Dependabot</a> is the bot behind GitHub
+automatica security update. It sends automatic updates for your project’s
+dependencies, making sure they are secure.</p>
+<p>You can automate the merge of pull request created by <cite>dependabot</cite> with a rule
+such as:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Dependabot pull requests</span>
     <span class="nt">conditions</span><span class="p">:</span>
@@ -704,17 +684,33 @@ project dependencies.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="greenkeeper">
-<h3>Greenkeeper<a class="headerlink" href="#greenkeeper" title="Permalink to this headline"> 🔗</a></h3>
-<p><a class="reference external" href="https://greenkeeper.io">Greenkeeper</a> sends automatic update of your <cite>npm</cite>
-dependencies.</p>
+<p>Alternatively, you can also enable the automatic merge for <cite>dependabot</cite> pull
+request only if they are for the same major version.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Greenkeeper pull requests</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Dependabot pull requests</span>
     <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=greenkeeper[bot]</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author~=^dependabot(|-preview)\[bot\]$</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=greenkeeper/verify</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title~=^Bump [^\s]+ from ([\d]+)\..+ to \1\.</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+</pre></div>
+</div>
+<p>The additional <cite>title</cite> based rule in <code class="docutils literal notranslate"><span class="pre">conditions</span></code> make sure that only the
+updates from <cite>1.x</cite> to <cite>1.y</cite> will be automatically merged. Updates from, e.g.,
+<cite>2.x</cite> to <cite>3.x</cite> will be ignored by Mergify.</p>
+</div>
+<div class="section" id="snyk">
+<h3>Snyk<a class="headerlink" href="#snyk" title="Permalink to this headline"> 🔗</a></h3>
+<p><a class="reference external" href="https://snyk.io">Snyk</a> sends automatic updates for your
+project’s dependencies.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Snyk pull requests</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title~=^\[Snyk\]</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">head~=^snyk-fix</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success~=^security/snyk</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
@@ -723,7 +719,7 @@ dependencies.</p>
 </div>
 <div class="section" id="renovate">
 <h3>Renovate<a class="headerlink" href="#renovate" title="Permalink to this headline"> 🔗</a></h3>
-<p><a class="reference external" href="https://renovatebot.com/">Renovate</a> sends automatic update for your
+<p><a class="reference external" href="https://renovatebot.com/">Renovate</a> sends automatic updates for your
 project’s dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Renovate pull requests</span>
@@ -736,10 +732,26 @@ project’s dependencies.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="requires-io">
+<h3>Requires.io<a class="headerlink" href="#requires-io" title="Permalink to this headline"> 🔗</a></h3>
+<p><a class="reference external" href="https://requires.io/">Requires.io</a> sends automatic updates for your
+project’s dependencies (only Python’s packages).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Requires.io pull requests</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">title~=^\[requires.io\]</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">head~=^requires-io</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="pyup">
 <h3>PyUp<a class="headerlink" href="#pyup" title="Permalink to this headline"> 🔗</a></h3>
-<p><a class="reference external" href="https://pyup.io/">PyUp</a> sends automatic update for your project’s Python
-dependencies.</p>
+<p><a class="reference external" href="https://pyup.io/">PyUp</a> sends automatic updates for your project’s
+Python dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for PyUp pull requests</span>
     <span class="nt">conditions</span><span class="p">:</span>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
 
   
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -116,22 +117,22 @@
 <li class="toctree-l2"><a class="reference internal" href="conditions.html#about-status-checks">About Status Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="actions.html">🚀 Actions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#assign">assign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#backport">backport</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#copy">copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#comment">comment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#review">review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#close">close</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#delete-head-branch">delete_head_branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#dismiss-reviews">dismiss_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#label">label</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#merge">merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#queue">queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#request-reviews">request_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#rebase">rebase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#update">update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#post-check">post_check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions/index.html">🚀 Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions/assign.html">assign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/backport.html">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/close.html">close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/comment.html">comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/delete_head_branch.html">delete_head_branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/dismiss_reviews.html">dismiss_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/label.html">label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/merge.html">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/post_check.html">post_check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/queue.html">queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/rebase.html">rebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/request_reviews.html">request_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/review.html">review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/update.html">update</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">⚙️ Commands</a><ul>
@@ -141,16 +142,11 @@
 <li class="toctree-l2"><a class="reference internal" href="commands.html#refresh">refresh</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Queue Rules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Merge Queues</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#the-merge-train">The Merge Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="queues.html#working-with-queue-rules">Working with Queue Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#configuring-the-merge-queues">Configuring the Merge Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#queue-rule-parameters">Queue Rule Parameters</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#strict-merge">Strict Merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#git-merge-workflow-and-mergify-equivalent-configuration">Git merge workflow and Mergify equivalent configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">🧪 Example Rules</a><ul>
@@ -169,7 +165,6 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#flexible-reviewers-assignment">👀 Flexible Reviewers Assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#running-ci-pipelines-automatically">💬 Running CI pipelines automatically</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#enforcing-pull-request-guidelines">📜 Enforcing Pull Request Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#updating-pr-for-linear-history">🐍 Updating PR for linear history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -210,8 +205,12 @@ from the root directory.</p></li>
 <p>Here’s what you need to know about the file format:</p>
 <ul class="simple">
 <li><p>The file format is <a class="reference external" href="http://yaml.org/">YAML</a>.</p></li>
-<li><p>The file main type is a dictionary whose only key is named
-<code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>.</p></li>
+<li><p>The file main type is a dictionary whose keys are named
+<code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> and <code class="docutils literal notranslate"><span class="pre">defaults</span></code>.</p></li>
+</ul>
+<div class="section" id="pull-request-rules">
+<h3>Pull Request Rules<a class="headerlink" href="#pull-request-rules" title="Permalink to this headline"> 🔗</a></h3>
+<ul class="simple">
 <li><p>The value type of the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> is list.</p></li>
 <li><p>Each entry in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> must be a dictionary.</p></li>
 </ul>
@@ -240,8 +239,8 @@ used when reporting information about a rule.</p></td>
 request for the rule to be applied.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">actions</span></code></p></td>
-<td><p>dictionary of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">🚀 Actions</span></a></p></td>
-<td><p>A dictionary made of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">🚀 Actions</span></a> that will be executed on the
+<td><p>dictionary of <a class="reference internal" href="actions/index.html#actions"><span class="std std-ref">🚀 Actions</span></a></p></td>
+<td><p>A dictionary made of <a class="reference internal" href="actions/index.html#actions"><span class="std std-ref">🚀 Actions</span></a> that will be executed on the
 matching pull requests.</p></td>
 </tr>
 </tbody>
@@ -249,6 +248,61 @@ matching pull requests.</p></td>
 <p>The rules are evaluated in the order they are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 and, therefore, the actions are executed in that same order.</p>
 <p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">🧪 Example Rules</span></a> for configuration file examples.</p>
+</div>
+<div class="section" id="defaults">
+<h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline"> 🔗</a></h3>
+<ul class="simple">
+<li><p>The value type of <code class="docutils literal notranslate"><span class="pre">defaults</span></code> is a dictionary.</p></li>
+</ul>
+<p>This dictionary must have the following key:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Name</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Value Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">actions</span></code></p></td>
+<td><p>dictionary of <a class="reference internal" href="actions/index.html#actions"><span class="std std-ref">🚀 Actions</span></a></p></td>
+<td><p>A dictionary made of <a class="reference internal" href="actions/index.html#actions"><span class="std std-ref">🚀 Actions</span></a> whose configuration will be used by default.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">defaults</span></code> section is used to define default configuration valued for actions run by pull request rules and by <a class="reference internal" href="commands.html#commands"><span class="std std-ref">⚙️ Commands</span></a>.
+If the options are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> they are used, otherwise, the values set in <code class="docutils literal notranslate"><span class="pre">defaults</span></code> are used.</p>
+<p>See example below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
+  <span class="nt">actions</span><span class="p">:</span>
+    <span class="nt">comment</span><span class="p">:</span>
+      <span class="nt">bot_account</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Autobot</span>
+
+<span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comment with default</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=comment</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">comment</span><span class="p">:</span>
+        <span class="nt">message</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">I 💙 Mergify</span>
+</pre></div>
+</div>
+<p>The config above is the same as below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comment with default</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=comment</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">comment</span><span class="p">:</span>
+        <span class="nt">message</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">I 💙 Mergify</span>
+        <span class="nt">bot_account</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Autobot</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline"> 🔗</a></h2>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
 
   
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -116,22 +117,22 @@
 <li class="toctree-l2"><a class="reference internal" href="conditions.html#about-status-checks">About Status Checks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="actions.html">🚀 Actions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#assign">assign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#backport">backport</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#copy">copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#comment">comment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#review">review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#close">close</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#delete-head-branch">delete_head_branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#dismiss-reviews">dismiss_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#label">label</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#merge">merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#queue">queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#request-reviews">request_reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#rebase">rebase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#update">update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="actions.html#post-check">post_check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions/index.html">🚀 Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions/assign.html">assign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/backport.html">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/close.html">close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/comment.html">comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/delete_head_branch.html">delete_head_branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/dismiss_reviews.html">dismiss_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/label.html">label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/merge.html">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/post_check.html">post_check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/queue.html">queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/rebase.html">rebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/request_reviews.html">request_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/review.html">review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions/update.html">update</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">⚙️ Commands</a><ul>
@@ -141,16 +142,11 @@
 <li class="toctree-l2"><a class="reference internal" href="commands.html#refresh">refresh</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Queue Rules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="queues.html">🔀 Merge Queues</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#the-merge-train">The Merge Train</a></li>
-<li class="toctree-l2"><a class="reference internal" href="queues.html#working-with-queue-rules">Working with Queue Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html#configuring-the-merge-queues">Configuring the Merge Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queues.html#queue-rule-parameters">Queue Rule Parameters</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#strict-merge">Strict Merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="merge-action.html#git-merge-workflow-and-mergify-equivalent-configuration">Git merge workflow and Mergify equivalent configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">🧪 Example Rules</a><ul>
@@ -169,7 +165,6 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#flexible-reviewers-assignment">👀 Flexible Reviewers Assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#running-ci-pipelines-automatically">💬 Running CI pipelines automatically</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#enforcing-pull-request-guidelines">📜 Enforcing Pull Request Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#updating-pr-for-linear-history">🐍 Updating PR for linear history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#bots">🤖 Bots</a></li>
 </ul>
 </li>
