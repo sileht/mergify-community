@@ -1687,7 +1687,7 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(42, 111, 150, 0.05);
 }
 
 .table-hover tbody tr:hover {
@@ -1871,8 +1871,8 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
-  border-color: #454d55;
+  background-color: #034870;
+  border-color: #046095;
 }
 .table .thead-light th {
   color: #495057;
@@ -1882,12 +1882,12 @@ pre code {
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #034870;
 }
 .table-dark th,
 .table-dark td,
 .table-dark thead th {
-  border-color: #454d55;
+  border-color: #046095;
 }
 .table-dark.table-bordered {
   border: 0;
