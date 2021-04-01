@@ -50,15 +50,18 @@
   <a class="navbar-brand" href="../../">
     <img class="logo" src="../../_static/mergify-logo-horizontal.png" alt="Mergify"/>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
-    <ul class="navbar-nav mr-auto">
+  <div class="navbar-collapse collapse" id="top-navbar">
+    <ul class="navbar-nav justify-content-end ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="https://mergify.io" target="_blank">Home</a>
       </li>
-            <li class="nav-item">
+      <li class="nav-item">
+        <a class="nav-link" href="https://mergify.io/about" target="_blank">About</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="https://blog.mergify.io" target="_blank">Blog</a>
       </li>
       <li class="nav-item">
@@ -67,10 +70,13 @@
       <li class="nav-item">
         <a class="nav-link" href="https://github.com/Mergifyio/mergify-engine/discussions" target="_blank">Discussions</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://status.mergify.io" target="_blank">Status</a>
+      </li>
     </ul>
     <div class="dropdown-divider d-block d-sm-none mb-4"></div>
-    <form class="form-inline" action="../../search/" method="get">
-      <input type="text" name="q" class="form-control mr-sm-2" placeholder="Search" />
+    <form class="form-inline justify-content-end" action="../../search/" method="get">
+      <input type="text" name="q" class="form-control mr-sm-2"/>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
@@ -181,7 +187,10 @@
             
   <div class="section" id="review">
 <span id="review-action"></span><h1>review<a class="headerlink" href="#review" title="Permalink to this headline"> 🔗</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">review</span></code> action reviews the pull request.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">review</span></code> action reviews the pull request. You can use it to approve or
+request a change on a pull request.</p>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -210,14 +219,33 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
 <td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
-<td><p>Mergify can impersonate a GitHub user to review a pull request.
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div> Mergify can impersonate a GitHub user to review a pull request.
 If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify will review the pull request
-itself.</p>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
-</td>
+itself.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
+<p>You can use Mergify to review a pull request on your behalf. This can be handy
+if you require a minimum number of review to be present on a pull request
+(e.g., due to <a class="reference external" href="https://docs.github.com/en/github/administering-a-repository/about-protected-branches">branch protection</a>) but wants to automate some merge.</p>
+<p><a class="reference external" href="https://github.com/features/security">Dependabot</a> is the bot behind GitHub
+automatic security update. It sends automatic updates for your project’s
+dependencies, making sure they are secure. You can automate the approval of
+pull request created by <cite>dependabot</cite> with a rule such as:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic approval for Dependabot pull requests</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author~=^dependabot(|-preview)\[bot\]$</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">review</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">APPROVE</span>
+        <span class="nt">message</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Automatically approving dependabot</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
