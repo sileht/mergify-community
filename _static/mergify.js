@@ -29,9 +29,12 @@ $(function() {
     .filter(".note").removeClass("note").addClass("alert-primary").children('p.admonition-title').prepend('<div class="icon"></div>').end().end()
     .filter(".warning").removeClass("warning").addClass("alert-warning").children('p.admonition-title').prepend('<div class="icon"></div>').end().end()
     .filter(".tip").removeClass("tip").addClass("alert-info").children('p.admonition-title').prepend('<div class="icon"></div>').end().end()
+    .filter(".important").removeClass("important").addClass("alert-primary").children('p.admonition-title').prepend('<div class="icon"></div>').end().end()
 
   // images
   $(".documentwrapper img").addClass("img-fluid");
+  // do not set img-fluid on image in tables
+  $(".documentwrapper table img").removeClass("img-fluid");
 
   // Fix embedded ToC (example page)
   $("div.topic > ul").addClass("list-group");

@@ -151,17 +151,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -187,6 +188,10 @@
             
   <div class="section" id="request-reviews">
 <span id="request-reviews-action"></span><h1>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline"> 🔗</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GitHub does not allow to request more 15 users or teams for a review.</p>
+</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">request_reviews</span></code> action requests reviews from users for the pull
 request.</p>
 <div class="section" id="options">
@@ -227,10 +232,6 @@ Weight must be between 1 and 65535 included.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>GitHub does not allow to request more 15 users or teams for a review.</p>
-</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
@@ -266,7 +267,7 @@ to use the name of modified files to do it:</p>
 <h3>👘 Random Review Assignment<a class="headerlink" href="#random-review-assignment" title="Permalink to this headline"> 🔗</a></h3>
 <p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
 <div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan<br/>Feature 💪</span></a></div></p>
-<p>It’s not fair to ask for the same users or teams to always do the review. You
+<p>It's not fair to ask for the same users or teams to always do the review. You
 can rather randomly assign a pull request to a group of users.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ask the security team to review security labelled PR</span>
@@ -300,7 +301,7 @@ assigned, you can add a weight to the user list:</p>
       <span class="nt">random_count</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
 </pre></div>
 </div>
-<p>In that case, it’s 3 times more likely then the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> will get a pull
+<p>In that case, it's 3 times more likely then the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> will get a pull
 request assigned rather than <code class="docutils literal notranslate"><span class="pre">GuillaumeOj</span></code>.</p>
 </div>
 </div>

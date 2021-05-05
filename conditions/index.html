@@ -144,17 +144,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -191,6 +192,17 @@ applied. Conditions must be listed under the <code class="docutils literal notra
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="s2">&quot;-&quot;</span> <span class="p">]</span> <span class="p">[</span> <span class="s2">&quot;#&quot;</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">attribute</span><span class="o">&gt;</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">]</span>
 </pre></div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as a comment delimiter in YAML. As <code class="docutils literal notranslate"><span class="pre">#</span></code>
+is the length operator in Mergify’s conditions system, don’t forget to use
+<code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition to write valid YAML syntax.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are only optional if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
+<code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
+</div>
 <ul class="simple">
 <li><p>The optional <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix is equivalent to the <cite>not</cite> operator.</p></li>
 <li><p>The optional <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix indicates to consider the length of the attribute
@@ -212,17 +224,6 @@ of contributors who approved the pull request.</p></li>
 pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-merged</span></code> matches if the pull requested has not been merged.</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as a comment delimiter in YAML. As <code class="docutils literal notranslate"><span class="pre">#</span></code>
-is the length operator in Mergify’s conditions system, don’t forget to use
-<code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition to write valid YAML syntax.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are only optional if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
-<code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
-</div>
 </div>
 <div class="section" id="attributes">
 <span id="id2"></span><h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"> 🔗</a></h2>
@@ -352,7 +353,7 @@ permission on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-success</span></code></p></td>
 <td><p>list of string</p></td>
-<td><p>The list of status checks that successfuly passed for the pull request.
+<td><p>The list of status checks that successfully passed for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
@@ -410,9 +411,9 @@ the condition is true if no value matches.</p></td>
 </tr>
 <tr class="row-even"><td><p>Match</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">~=</span></code></p></td>
-<td><p>This operator checks for regular expression matching. If the target
-attribute type is a list, each element of the list is matched
-against the value and the condition is true if any value matches.</p></td>
+<td><p>This operator checks for <a class="reference internal" href="../configuration/#regular-expressions"><span class="std std-ref">regular expressions</span></a> matching. If the target attribute type is a list, each
+element of the list is matched against the value and the condition is
+true if any value matches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Greater Than or Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> or <code class="docutils literal notranslate"><span class="pre">≥</span></code></p></td>
@@ -440,10 +441,6 @@ It’s usually used to compare against the length of a list using the
 </tr>
 </tbody>
 </table>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can use <a class="reference external" href="http://www.pyregex.com">PyRegex</a> or <a class="reference external" href="https://pythex.org/">Pythex</a> to test your regular expression.</p>
-</div>
 </div>
 <div class="section" id="how-to-match-lists">
 <h2>How To Match Lists<a class="headerlink" href="#how-to-match-lists" title="Permalink to this headline"> 🔗</a></h2>
@@ -531,21 +528,22 @@ GitHub Action, only the job name is used.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="validating-all-status-check">
-<h3>Validating All Status Check<a class="headerlink" href="#validating-all-status-check" title="Permalink to this headline"> 🔗</a></h3>
-<p>A common situation is to require a condition that is true when “every status
-checks (CI) pass” — especially before executing the <a class="reference internal" href="../actions/merge/#merge-action"><span class="std std-ref">merge</span></a> action.</p>
+<div class="section" id="validating-all-status-checks">
+<h3>Validating All Status Checks<a class="headerlink" href="#validating-all-status-checks" title="Permalink to this headline"> 🔗</a></h3>
+<p>A common condition is to require that “every status check (CI) passes” —
+especially before executing the <a class="reference internal" href="../actions/merge/#merge-action"><span class="std std-ref">merge</span></a> action.</p>
 <p><strong>There is no such thing as “every status check” in GitHub.</strong></p>
 <p>Here’s why:</p>
 <ol class="arabic simple">
-<li><p>Each pull request can have its own custom list of status check.</p></li>
-<li><p>By default, a pull request has zero status check.</p></li>
+<li><p>Each pull request can have its own custom list of status checks.</p></li>
+<li><p>On creation, or when a new commit is pushed, a pull request has <strong>no</strong>
+status check.</p></li>
 <li><p>A status check might not be reported by a service (CI) (e.g., because it’s
-broken) and therefore be totally absent.</p></li>
+broken) and therefore be absent.</p></li>
 </ol>
-<p>Those three facts makes it <strong>mandatory</strong> to write explicitly the checks that
-are expected for your condition to be valid. Therefore you should write
-something like:</p>
+<p>Those three facts make it <strong>mandatory</strong> to write explicitly the checks that are
+expected for your condition to be valid. Therefore you must list explicitly
+every status check that is expected, e.g.:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">check-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Windows</span>
   <span class="p p-Indicator">-</span> <span class="nt">check-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Linux</span>
@@ -555,8 +553,8 @@ something like:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">#check-failure=0</span></code>, because this will be true as soon as the pull request is
 created and before any service report its status (see point 2. above).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">check-success~=build</span></code> while expecting this to wait for all status checks
-that have <code class="docutils literal notranslate"><span class="pre">build</span></code> in their name (see point 1. above).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check-success~=build</span></code> while expecting this to wait for “all” status checks
+that have <code class="docutils literal notranslate"><span class="pre">build</span></code> in their name (see point 1. and 2.above).</p></li>
 </ul>
 <p>Such conditions won’t do what you want them to do.</p>
 </div>

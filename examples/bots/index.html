@@ -136,17 +136,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -269,6 +270,21 @@ Python dependencies.</p>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for PyUp pull requests</span>
     <span class="nt">conditions</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=pyup-bot</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="depfu">
+<h2>Depfu<a class="headerlink" href="#depfu" title="Permalink to this headline"> 🔗</a></h2>
+<p><a class="reference external" href="https://depfu.com/">Depfu</a> notifies you automatically about new versions of
+your Ruby, JavaScript, and Elixir project’s dependencies.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Depfu pull requests</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=depfu[bot]</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>

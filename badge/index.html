@@ -144,17 +144,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -186,13 +187,10 @@ that your repository is managed by Mergify.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/&lt;owner&gt;/&lt;repo&gt;
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;owner&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;repo&gt;</span></code> are placeholders which have to be adapted to the
 repository. For example:
 <code class="docutils literal notranslate"><span class="pre">https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/mergifyio/mergify-engine&amp;style=flat</span></code>
 is a valid URL.</p>
-</div>
 <div class="section" id="embedding">
 <h2>Embedding<a class="headerlink" href="#embedding" title="Permalink to this headline"> 🔗</a></h2>
 <p>You can embed those badges by adding them to, e.g., your <code class="docutils literal notranslate"><span class="pre">README</span></code> files.</p>

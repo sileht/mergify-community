@@ -36,7 +36,7 @@ div.graphviz > img.graphviz {
 }
 
 img.img-fluid {
-    margin-bottom: 1.5em;
+    margin-bottom: 1rem;
 }
 
 .figure {
@@ -85,25 +85,22 @@ nav.navbar {
 
 /* Fix headers for scrolling */
 
-.section > h1 {
+section > section {
+  margin-bottom: 0.75rem;
+}
+
+section > h1 {
     padding-top: 80px;
     margin-top: -80px;
 }
 
-.section > h2,
-.section > h3,
-.section > h4,
-.section > h5,
-.section > h6 {
+section > h2,
+section > h3,
+section > h4,
+section > h5,
+section > h6 {
     padding-top: 80px;
     margin-top: -50px;
-}
-
-/* Headers override from bootstrap */
-/* smaller h3 so you can see them out of h2 */
-
-h3 {
-    font-size: 1.5rem;
 }
 
 /* Sidebar styles */
@@ -131,7 +128,8 @@ div.document {
         margin-top: -1em;
         max-height: 100vh;
         border-right: 1px solid rgb(236, 238, 239);
-        overflow: scroll;
+        overflow-x: auto;
+        overflow-y: scroll;
     }
 }
 
@@ -199,7 +197,13 @@ p.admonition-title:after {
 div.alert {
     /* At least needed to keep feature tag inside alerts div */
     overflow: hidden;
+    float: right;
+    max-width: 33%;
+    clear: both;
+    margin-left: 1em;
+    margin-bottom: 1em;
 }
+
 
 div.alert > p.admonition-title {
     font-weight: bold;

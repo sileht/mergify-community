@@ -151,17 +151,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -194,9 +195,7 @@ Merging broken pull requests can happen when outdated pull requests are being
 merged in their base branch.</p>
 <div class="section" id="why-queues">
 <h2>Why Queues?<a class="headerlink" href="#why-queues" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="the-problem">
-<h3>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline"> 🔗</a></h3>
-<p>To understand the problem queues resolve, imagine the following situation:</p>
+<p id="merge-queue-problem">To understand the problem queues resolve, imagine the following situation:</p>
 <ul class="simple">
 <li><p>The base branch (e.g., <code class="docutils literal notranslate"><span class="pre">main</span></code>) has its continuous integration testing
 passing correctly.</p></li>
@@ -204,9 +203,9 @@ passing correctly.</p></li>
 </ul>
 <p>The state of the repository can be represented like this:</p>
 <div class="graphviz"><img src="../../_images/graphviz-37a87eb05921955db02ff2d0a0dba469d3093d8e.png" alt="Pull request is open" class="graphviz" /></div>
-<p>While the pull request is open, another commit is pushed to <code class="docutils literal notranslate"><span class="pre">main</span></code> — let’s
+<p>While the pull request is open, another commit is pushed to <code class="docutils literal notranslate"><span class="pre">main</span></code> — let's
 call it <cite>new commit</cite>. That new commit can be pushed directly to <code class="docutils literal notranslate"><span class="pre">main</span></code> or
-merged from another pull request; it doesn’t matter.</p>
+merged from another pull request; it doesn't matter.</p>
 <p>The tests are run against the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch by the CI, and they pass. The
 state of the repository and its continuous integration system can be now
 described like this:</p>
@@ -222,7 +221,6 @@ did not test the pull request with the <cite>new commit</cite> added to the base
 This <cite>new commit</cite> might have introduced some new tests in the base branch while
 the pull request was open. That pull request may not have the correct code to
 pass this new test.</p>
-</div>
 <div class="section" id="using-queues">
 <h3>Using Queues<a class="headerlink" href="#using-queues" title="Permalink to this headline"> 🔗</a></h3>
 <p>Using a merge queue solves that issue by updating any pull request that is not
@@ -244,7 +242,7 @@ is outdated like this:</p>
 <p>Mergify will make sure the pull request #2 is updated with the latest tip of
 the base branch before merging:</p>
 <div class="graphviz"><img src="../../_images/graphviz-10b07361fd8ac8b4e3e2eb5386d9fb3821407ba8.png" alt="strict merge" class="graphviz" /></div>
-<p>That way, there’s no way to merge a broken pull request into the base branch.</p>
+<p>That way, there's no way to merge a broken pull request into the base branch.</p>
 </div>
 </div>
 <div class="section" id="configuring-the-merge-queues">
@@ -270,13 +268,13 @@ until all preceding queues are empty.</p>
 <img alt="The merge queue from the dashboard" src="../../_images/merge-queue.png" />
 </div>
 </div>
-<div class="section" id="speculative-merges">
-<span id="id1"></span><h2>Speculative Merges<a class="headerlink" href="#speculative-merges" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="speculative-checks">
+<span id="id1"></span><h2>Speculative Checks<a class="headerlink" href="#speculative-checks" title="Permalink to this headline"> 🔗</a></h2>
 <p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
 <p>Merging pull requests one by one serially can take a lot of time, depending on
 the continuous integration run time. To merge pull requests faster, Mergify
-queues support <cite>speculative merges</cite>.</p>
-<p>With speculative merges, the first pull requests from the queue are embarked in
+queues support <cite>speculative checks</cite>.</p>
+<p>With speculative checks, the first pull requests from the queue are embarked in
 a <cite>merge train</cite> and tested together in parallel so they can be merged faster. A
 merge train consists of two or more pull requests embarked together to be
 tested speculatively. To test them, Mergify creates temporary pull requests
@@ -285,9 +283,9 @@ where multiple queued pull requests are merged together.</p>
 integration pipelines can run on all of them in parallel. Currently, Mergify
 embarks up from 1 to 20 pull requests into the merge train (you can set the
 value with the <code class="docutils literal notranslate"><span class="pre">speculative_checks</span></code> settings in <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code>).</p>
-<div class="figure align-default" id="id4">
+<div class="figure align-default" id="id5">
 <div class="graphviz"><img src="../../_images/graphviz-778c7bc579a1248df647b483c60ac1a33070521e.png" alt="Merge train" class="graphviz" /></div>
-<p class="caption"><span class="caption-text">A merge queue with 5 pull requests and <code class="docutils literal notranslate"><span class="pre">speculative_checks</span></code> set to 3</span><a class="headerlink" href="#id4" title="Permalink to this image"> 🔗</a></p>
+<p class="caption"><span class="caption-text">A merge queue with 5 pull requests and <code class="docutils literal notranslate"><span class="pre">speculative_checks</span></code> set to 3</span><a class="headerlink" href="#id5" title="Permalink to this image"> 🔗</a></p>
 </div>
 <p>In the above example, three pull requests are tested at the same time by the
 continuous integration system: <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">#1</span></code>, <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">#1</span> <span class="pre">+</span> <span class="pre">PR</span> <span class="pre">#2</span></code> and <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">#1</span> <span class="pre">+</span> <span class="pre">PR</span> <span class="pre">#2</span>
@@ -304,7 +302,7 @@ request <code class="docutils literal notranslate"><span class="pre">PR</span> <
 <span class="pre">#1</span> <span class="pre">+</span> <span class="pre">PR</span> <span class="pre">#2</span> <span class="pre">+</span> <span class="pre">PR</span> <span class="pre">#3</span></code> and <code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">#3</span></code>.</p>
 <p>In the case where a new commit is pushed on the base branch, Mergify resets the
 merge train and starts over the process.</p>
-<p>If an embarked pull request doesn’t match the <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code> anymore, it is
+<p>If an embarked pull request doesn't match the <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code> anymore, it is
 removed from the merge train. All pull requests embarked after it are
 disembarked and re-embarked.</p>
 </div>
@@ -404,7 +402,7 @@ end of the title.</p></li>
 <td><p>The name of the merge queue.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conditions</span></code></p></td>
-<td><p>list of <code class="docutils literal notranslate"><span class="pre">conditions</span></code></p></td>
+<td><p>list of <a class="reference internal" href="../../conditions/#conditions"><span class="std std-ref">🎯 Conditions</span></a></p></td>
 <td></td>
 <td><p>The list of <code class="docutils literal notranslate"><span class="pre">conditions</span></code> to match to get the queued pull request merged.</p></td>
 </tr>
@@ -413,7 +411,7 @@ end of the title.</p></li>
 <td><p>1</p></td>
 <td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div> The maximum number of checks to run in parallel in the queue. Must be
 between 1 and 20.
-See <a class="reference internal" href="#speculative-merges"><span class="std std-ref">Speculative Merges</span></a>.</p></td>
+See <a class="reference internal" href="#speculative-checks"><span class="std std-ref">Speculative Checks</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -448,7 +446,7 @@ in the queue, it will be updated with the latest commit of its base branch.</p>
 </div>
 <div class="section" id="multiple-queues">
 <h3>🚥 Multiple Queues<a class="headerlink" href="#multiple-queues" title="Permalink to this headline"> 🔗</a></h3>
-<p>By using multiple queues, it’s possible to put some pull requests in a higher
+<p>By using multiple queues, it's possible to put some pull requests in a higher
 priority queue. As queues are processed one after the other, the following
 example allow to add a label <code class="docutils literal notranslate"><span class="pre">urgent</span></code> to a pull request so it gets put in the
 higher priority queue.</p>
@@ -483,10 +481,38 @@ higher priority queue.</p>
 </pre></div>
 </div>
 <p>With such a configuration, a pull request with the label <code class="docutils literal notranslate"><span class="pre">urgent</span></code> will get
-into the queue as soon as it’s approved by 2 developers but before the CI has
+into the queue as soon as it's approved by 2 developers but before the CI has
 even run on it. It will be in front of the <code class="docutils literal notranslate"><span class="pre">default</span></code> queue. Mergify will
 update the pull request with its base branch if necessary, wait for the CI to
 pass and then merge the pull request.</p>
+</div>
+<div class="section" id="id4">
+<h3>🎲 Speculative Checks<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
+<p>If your continuous integration system takes a long time to validate the
+enqueued pull requests, it might be interesting to enable <a class="reference internal" href="#speculative-checks"><span class="std std-ref">speculative
+checks</span></a>. This will allow Mergify to trigger multiple runs
+of the CI in parallel.</p>
+<p>In the following example, by setting the <code class="docutils literal notranslate"><span class="pre">speculative_checks</span></code> option to
+<code class="docutils literal notranslate"><span class="pre">3</span></code>, Mergify will create up to new 2 pull requests to check if the first
+three enqueued pull requests are mergeable.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">queue_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+    <span class="nt">speculative_checks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
+
+<span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge using the merge queue and speculative checks</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=main</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;#approved-reviews-by&gt;=2&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">queue</span><span class="p">:</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

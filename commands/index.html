@@ -144,17 +144,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -187,12 +188,14 @@ actions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@Mergifyio &lt;command&gt; [parameters …]
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run commands, a user needs to be the author of the pull request or have write access to the repository.</p>
+</div>
 <p>The list of available commands is listed below, with their parameters:</p>
 <div class="section" id="rebase">
 <span id="rebase-command"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline"> 🔗</a></h2>
-<blockquote>
-<div><p>Runs the <a class="reference internal" href="../actions/rebase/#rebase-action"><span class="std std-ref">rebase</span></a> action.</p>
-</div></blockquote>
+<p>Runs the <a class="reference internal" href="../actions/rebase/#rebase-action"><span class="std std-ref">rebase</span></a> action.</p>
 <table class="colwidths-given docutils align-left">
 <colgroup>
 <col style="width: 13%" />
@@ -207,19 +210,10 @@ actions.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
-<div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan<br/>Feature 💪</span></a></div>
-If the repository is bigger than 512 MB, the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action is only
-available for <a class="reference external" href="https://mergify.io/pricing">Essential and Premium Plan subscribers</a>.</p>
-</div>
 </div>
 <div class="section" id="update">
 <span id="update-command"></span><h2>update<a class="headerlink" href="#update" title="Permalink to this headline"> 🔗</a></h2>
-<blockquote>
-<div><p>Runs the <a class="reference internal" href="../actions/update/#update-action"><span class="std std-ref">update</span></a> action.</p>
-</div></blockquote>
+<p>Runs the <a class="reference internal" href="../actions/update/#update-action"><span class="std std-ref">update</span></a> action.</p>
 <table class="colwidths-given docutils align-left">
 <colgroup>
 <col style="width: 13%" />
@@ -252,17 +246,28 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
-<div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan<br/>Feature 💪</span></a></div>
-If the repository is bigger than 512 MB, the <code class="docutils literal notranslate"><span class="pre">backport</span></code> action is only
-available for <a class="reference external" href="https://mergify.io/pricing">Essential and Premium Plan subscribers</a>.</p>
 </div>
+<div class="section" id="copy">
+<span id="copy-command"></span><h2>copy<a class="headerlink" href="#copy" title="Permalink to this headline"> 🔗</a></h2>
+<p>Runs the <a class="reference internal" href="../actions/copy/#copy-action"><span class="std std-ref">copy</span></a> action.</p>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Syntax</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">copy</span> <span class="pre">&lt;branch</span> <span class="pre">name&gt;</span> <span class="pre">&lt;branch</span> <span class="pre">name</span> <span class="pre">2&gt;</span> <span class="pre">…</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Example</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">copy</span> <span class="pre">stable/3.1</span> <span class="pre">stable/4.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="refresh">
 <h2>refresh<a class="headerlink" href="#refresh" title="Permalink to this headline"> 🔗</a></h2>
-<p>Re-evalutes your Mergify rules on this pull request.</p>
+<p>Re-evaluates your Mergify rules on this pull request.</p>
 <table class="colwidths-given docutils align-left">
 <colgroup>
 <col style="width: 13%" />

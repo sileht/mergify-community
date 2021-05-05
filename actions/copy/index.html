@@ -151,17 +151,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -187,7 +188,6 @@
             
   <div class="section" id="copy">
 <span id="copy-action"></span><h1>copy<a class="headerlink" href="#copy" title="Permalink to this headline"> 🔗</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">copy</span></code> action creates a copy of the pull request targetting other branches.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
@@ -195,6 +195,7 @@
 If the repository is bigger than 512 MB, the <code class="docutils literal notranslate"><span class="pre">copy</span></code> action is only
 available for <a class="reference external" href="https://mergify.io/pricing">Essential and Premium  Plan subscribers</a>.</p>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">copy</span></code> action creates a copy of the pull request targeting other branches.</p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
 <table class="colwidths-given docutils align-default">
@@ -228,14 +229,53 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 <td><p>Whether to create the pull requests even if they are conflicts when
 cherry-picking the commits.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
+<td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td></td>
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+Mergify can impersonate a GitHub user to copy a pull request.
+If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify copies the pull request
+itself.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">labels</span></code></p></td>
+<td><p>list of string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>The list of labels to add to the created pull requests.</p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label_conflicts</span></code></p></td>
 <td><p>string</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">conflicts</span></code></p></td>
 <td><p>The label to add to the created pull request if it has conflicts and
 <code class="docutils literal notranslate"><span class="pre">ignore_conflicts</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">assignees</span></code></p></td>
+<td><p>list of <a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td></td>
+<td><p>Users to assign the newly created pull request. As the type is
+<a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a>, you could use, e.g., <code class="docutils literal notranslate"><span class="pre">{{author}}</span></code> to assign
+the pull request to its original author.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">title</span> <span class="pre">}}</span> <span class="pre">(copy</span> <span class="pre">#{{</span> <span class="pre">number</span> <span class="pre">}})</span></code></p></td>
+<td><p>The pull request title.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">body</span></code></p></td>
+<td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">automatic</span> <span class="pre">copy</span> <span class="pre">of</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">#{{number}}</span> <span class="pre">done</span> <span class="pre">by</span> <span class="pre">[Mergify](https://mergify.io).\n{{cherry_pick_error}}</span></code></p></td>
+<td><p>The pull request body.</p></td>
+</tr>
 </tbody>
 </table>
+<p>As the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">body</span></code> are <a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">templates</span></a>, you can
+leverage any pull request attributes to use as content, e.g. <code class="docutils literal notranslate"><span class="pre">{{author}}</span></code>.
+You can also use this additional variable:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">destination_branch</span> <span class="pre">}}</span></code>: the name of destination branch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">cherry_pick_error</span> <span class="pre">}}</span></code>: the cherry pick error message if any (only available in <code class="docutils literal notranslate"><span class="pre">body</span></code>).</p></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>

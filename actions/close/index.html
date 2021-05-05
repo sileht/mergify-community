@@ -151,17 +151,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../commands/#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../commands/#refresh">refresh</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/">🧪 Example Rules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#automatic-merge-when-ci-works-and-approving-reviews">✅ Automatic Merge when CI works and approving reviews</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/#using-regular-expressions">🌀 Using Regular Expressions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#merging-based-on-modified-files">🗂 Merging based on Modified Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#less-strict-rules-for-stable-branches">🏖 Less Strict Rules for Stable Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-enable-disable-merge">🎬 Using Labels to Enable/Disable Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#using-labels-to-prioritize-merge">⚡️ Using Labels to Prioritize Merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#require-all-requested-reviews-to-be-approved">🙅️ Require All Requested Reviews to Be Approved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/#matching-pull-requests-with-task-lists">☑️ Matching Pull Requests with Task Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/#bots">🤖 Bots</a></li>
 </ul>
 </li>
@@ -218,13 +219,13 @@
 <div class="section" id="automatically-close-pull-request-touching-a-file">
 <h3>❌ Automatically close pull request touching a file<a class="headerlink" href="#automatically-close-pull-request-touching-a-file" title="Permalink to this headline"> 🔗</a></h3>
 <p>If you wanted to automatically close pull request that touches a certain file,
-let’s say <code class="docutils literal notranslate"><span class="pre">do_not_touch.txt</span></code>, you could write a rule such as:</p>
+let's say <code class="docutils literal notranslate"><span class="pre">do_not_touch.txt</span></code>, you could write a rule such as:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">disallow changing a file</span>
     <span class="nt">conditions</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">files=do_not_touch.txt</span>
     <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">close</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+      <span class="nt">close</span><span class="p">:</span>
 </pre></div>
 </div>
 </div>
