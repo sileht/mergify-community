@@ -1,5 +1,5 @@
 actions/merge.rst:15: [redirected permanently] https://docs.github.com/en/github/administering-a-repository/about-protected-branches to https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches
-examples.rst:151: [redirected permanently] https://help.github.com/articles/labeling-issues-and-pull-requests/ to https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels
 actions/label.rst:12: [redirected permanently] https://help.github.com/articles/about-labels/ to https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels
+examples.rst:151: [redirected permanently] https://help.github.com/articles/labeling-issues-and-pull-requests/ to https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels
 configuration.rst:179: [redirected with Found] https://jinja.palletsprojects.com/templates/ to https://jinja.palletsprojects.com/en/3.0.x/templates/
 examples.rst:77: [redirected permanently] https://renovatebot.com/ to https://www.whitesourcesoftware.com/free-developer-tools/renovate
