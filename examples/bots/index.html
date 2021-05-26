@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Configuration Examples for Bots" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Configuration Examples for Bots" name="description" />
 <meta content="mergify, examples, dependabot, greenkeeper, renovate, pyup, imgbot" name="keywords" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +16,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -171,8 +171,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="bots">
-<h1>🤖 Bots<a class="headerlink" href="#bots" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="bots">
+<h1>🤖 Bots<a class="headerlink" href="#bots" title="Permalink to this headline">🔗</a></h1>
 <p>Some pull requests might be created automatically by other tools, such as the
 ones sending automatic dependencies update. You might decide that there’s no
 need to manually review and approve those pull request as long as your
@@ -181,8 +181,8 @@ continuous integration system validates them.</p>
 automatically merge those updates without human intervention if the continuous
 integration system validates them. <code class="docutils literal notranslate"><span class="pre">Travis</span> <span class="pre">CI</span> <span class="pre">-</span> <span class="pre">Pull</span> <span class="pre">Request</span></code> is used as the
 CI check name here — adjust it to whatever you use.</p>
-<div class="section" id="dependabot">
-<h2>Dependabot<a class="headerlink" href="#dependabot" title="Permalink to this headline"> 🔗</a></h2>
+<section id="dependabot">
+<h2>Dependabot<a class="headerlink" href="#dependabot" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://github.com/features/security">Dependabot</a> is the bot behind GitHub
 automatic security update. It sends automatic updates for your project’s
 dependencies, making sure they are secure.</p>
@@ -214,9 +214,9 @@ request only if they are for the same major version.</p>
 <p>The additional <cite>title</cite> based rule in <code class="docutils literal notranslate"><span class="pre">conditions</span></code> make sure that only the
 updates from <cite>1.x</cite> to <cite>1.y</cite> will be automatically merged. Updates from, e.g.,
 <cite>2.x</cite> to <cite>3.x</cite> will be ignored by Mergify.</p>
-</div>
-<div class="section" id="snyk">
-<h2>Snyk<a class="headerlink" href="#snyk" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="snyk">
+<h2>Snyk<a class="headerlink" href="#snyk" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://snyk.io">Snyk</a> sends automatic updates for your
 project’s dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -230,9 +230,9 @@ project’s dependencies.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="renovate">
-<h2>Renovate<a class="headerlink" href="#renovate" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="renovate">
+<h2>Renovate<a class="headerlink" href="#renovate" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://renovatebot.com/">Renovate</a> sends automatic updates for your
 project’s dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -245,9 +245,9 @@ project’s dependencies.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="requires-io">
-<h2>Requires.io<a class="headerlink" href="#requires-io" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="requires-io">
+<h2>Requires.io<a class="headerlink" href="#requires-io" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://requires.io/">Requires.io</a> sends automatic updates for your
 project’s dependencies (only Python’s packages).</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -261,9 +261,9 @@ project’s dependencies (only Python’s packages).</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="pyup">
-<h2>PyUp<a class="headerlink" href="#pyup" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="pyup">
+<h2>PyUp<a class="headerlink" href="#pyup" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://pyup.io/">PyUp</a> sends automatic updates for your project’s
 Python dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -276,9 +276,9 @@ Python dependencies.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="depfu">
-<h2>Depfu<a class="headerlink" href="#depfu" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="depfu">
+<h2>Depfu<a class="headerlink" href="#depfu" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://depfu.com/">Depfu</a> notifies you automatically about new versions of
 your Ruby, JavaScript, and Elixir project’s dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -291,9 +291,9 @@ your Ruby, JavaScript, and Elixir project’s dependencies.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="imgbot">
-<h2>ImgBot<a class="headerlink" href="#imgbot" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="imgbot">
+<h2>ImgBot<a class="headerlink" href="#imgbot" title="Permalink to this headline">🔗</a></h2>
 <p><a class="reference external" href="https://github.com/marketplace/imgbot">ImgBot</a> optimizes your images and
 saves you time.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -306,8 +306,8 @@ saves you time.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -323,7 +323,7 @@ saves you time.</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/examples/bots.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/examples/bots.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Conditions" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Conditions" name="description" />
 <meta content="mergify, conditions" name="keywords" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +16,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -179,15 +179,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="conditions">
-<span id="id1"></span><h1>🎯 Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="conditions">
+<span id="id1"></span><h1>🎯 Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">🔗</a></h1>
 <p>Conditions are used in pull request rules and queue rules to check if a pull
 request matches a certain rule. If a pull request matches all of the listed
 conditions in a rule, the subsequent actions listed in that rule will be
 applied. Conditions must be listed under the <code class="docutils literal notranslate"><span class="pre">conditions</span></code> section of the
 <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> or <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code> entries — see <a class="reference internal" href="../configuration/#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
-<div class="section" id="grammar">
-<h2>Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline"> 🔗</a></h2>
+<section id="grammar">
+<h2>Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">🔗</a></h2>
 <p>A condition is a string that has the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="s2">&quot;-&quot;</span> <span class="p">]</span> <span class="p">[</span> <span class="s2">&quot;#&quot;</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">attribute</span><span class="o">&gt;</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">]</span>
 </pre></div>
@@ -224,9 +224,9 @@ of contributors who approved the pull request.</p></li>
 pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-merged</span></code> matches if the pull requested has not been merged.</p></li>
 </ul>
-</div>
-<div class="section" id="attributes">
-<span id="id2"></span><h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="attributes">
+<span id="id2"></span><h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">🔗</a></h2>
 <p>Here’s the list of pull request attribute that can be used in conditions:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -367,9 +367,44 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
 details.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-failure</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-success-or-neutral</span></code></p></td>
+<td><p>list of string</p></td>
+<td><p>The list of status checks that successfully passed or are neutral for
+the pull request.
+This is the name of a <em>status check</em> such as
+<cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
+details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">check-failure</span></code></p></td>
 <td><p>list of string</p></td>
 <td><p>The list of status checks that failed for the pull request.
+This is the name of a <em>status check</em> such as
+<cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
+details.
+Checks that report being cancelled, timed out, and action
+required are also considered as failures.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-skipped</span></code></p></td>
+<td><p>list of string</p></td>
+<td><p>The list of status checks that was skipped for the pull request.
+This is the name of a <em>status check</em> such as
+<cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
+details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">check-pending</span></code></p></td>
+<td><p>list of string</p></td>
+<td><p>The list of status checks that is pending for the pull request.
+This is the name of a <em>status check</em> such as
+<cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
+details.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-stale</span></code></p></td>
+<td><p>list of string</p></td>
+<td><p>The list of status checks that are stale for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
@@ -381,9 +416,9 @@ details.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="operators">
-<span id="id3"></span><h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="operators">
+<span id="id3"></span><h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -441,9 +476,9 @@ It’s usually used to compare against the length of a list using the
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="how-to-match-lists">
-<h2>How To Match Lists<a class="headerlink" href="#how-to-match-lists" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="how-to-match-lists">
+<h2>How To Match Lists<a class="headerlink" href="#how-to-match-lists" title="Permalink to this headline">🔗</a></h2>
 <p>Some attributes have a type of <code class="docutils literal notranslate"><span class="pre">list</span></code>. Most <a class="reference internal" href="#operators">Operators</a> are able to match
 value against lists: they will iterate over all the values of the list and
 return true if any of the value matches.</p>
@@ -474,9 +509,9 @@ modified in the pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-files~=^src/</span></code> is <strong>true</strong> if none of the files that are modified are in
 the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p></li>
 </ul>
-</div>
-<div class="section" id="implementing-or-conditions">
-<h2>Implementing Or Conditions<a class="headerlink" href="#implementing-or-conditions" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="implementing-or-conditions">
+<h2>Implementing Or Conditions<a class="headerlink" href="#implementing-or-conditions" title="Permalink to this headline">🔗</a></h2>
 <p>The <cite>conditions</cite> do not support the <cite>or</cite> operation. As Mergify evaluates and
 apply every matching rules from your configuration, you can implement multiple
 rules in order to have this.</p>
@@ -500,12 +535,13 @@ rules in order to have this.</p>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="about-status-checks">
-<h2>About Status Checks<a class="headerlink" href="#about-status-checks" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="generic-status-check">
-<h3>Generic Status Check<a class="headerlink" href="#generic-status-check" title="Permalink to this headline"> 🔗</a></h3>
-<p>When using the <code class="docutils literal notranslate"><span class="pre">check-success</span></code>, <code class="docutils literal notranslate"><span class="pre">check-neutral</span></code> and <code class="docutils literal notranslate"><span class="pre">check-failure</span></code>
+</section>
+<section id="about-status-checks">
+<h2>About Status Checks<a class="headerlink" href="#about-status-checks" title="Permalink to this headline">🔗</a></h2>
+<section id="generic-status-check">
+<h3>Generic Status Check<a class="headerlink" href="#generic-status-check" title="Permalink to this headline">🔗</a></h3>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">check-success</span></code>, <code class="docutils literal notranslate"><span class="pre">check-neutral</span></code>, <code class="docutils literal notranslate"><span class="pre">check-failure</span></code>,
+<code class="docutils literal notranslate"><span class="pre">check-skipped</span></code>, <code class="docutils literal notranslate"><span class="pre">check-pending</span></code>, and <code class="docutils literal notranslate"><span class="pre">check-stale</span></code>
 conditions, you need to use the name of your check service. This can be find by
 opening an existing pull request and scrolling down near the <code class="docutils literal notranslate"><span class="pre">Merge</span></code> button.</p>
 <img alt="Status check example" src="../_images/status-check-example.png" />
@@ -516,9 +552,9 @@ this checks succeed before doing any action should be written as:</p>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Uno.UI - CI</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="github-actions">
-<h3>GitHub Actions<a class="headerlink" href="#github-actions" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="github-actions">
+<h3>GitHub Actions<a class="headerlink" href="#github-actions" title="Permalink to this headline">🔗</a></h3>
 <p>GitHub Actions works slightly differently. To match a status check when using
 GitHub Action, only the job name is used.</p>
 <img alt="Status check GitHub Action example" src="../_images/status-check-gh-example.png" />
@@ -527,9 +563,9 @@ GitHub Action, only the job name is used.</p>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=A job to say hello</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="validating-all-status-checks">
-<h3>Validating All Status Checks<a class="headerlink" href="#validating-all-status-checks" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="validating-all-status-checks">
+<h3>Validating All Status Checks<a class="headerlink" href="#validating-all-status-checks" title="Permalink to this headline">🔗</a></h3>
 <p>A common condition is to require that “every status check (CI) passes” —
 especially before executing the <a class="reference internal" href="../actions/merge/#merge-action"><span class="std std-ref">merge</span></a> action.</p>
 <p><strong>There is no such thing as “every status check” in GitHub.</strong></p>
@@ -557,9 +593,9 @@ created and before any service report its status (see point 2. above).</p></li>
 that have <code class="docutils literal notranslate"><span class="pre">build</span></code> in their name (see point 1. and 2.above).</p></li>
 </ul>
 <p>Such conditions won’t do what you want them to do.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -575,7 +611,7 @@ that have <code class="docutils literal notranslate"><span class="pre">build</sp
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/conditions.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/conditions.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

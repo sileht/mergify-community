@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Introduction to Mergify Configuration and Deployment" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Introduction to Mergify Configuration and Deployment" name="description" />
 <meta content="mergify, automation, deployment, start" name="keywords" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +16,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -179,10 +179,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="getting-started">
-<h1>➡️ Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"> 🔗</a></h1>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"> 🔗</a></h2>
+  <section id="getting-started">
+<h1>➡️ Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">🔗</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">🔗</a></h2>
 <p>Mergify is a GitHub Application that operates on your GitHub repositories to
 automate them. You need to install Mergify on your GitHub Account to have it
 working.</p>
@@ -196,20 +196,20 @@ Mergify access to. Select any repository you like, or all if you wish.</p></li>
 <ol class="arabic simple" start="4">
 <li><p>You will be redirected to the dashboard.</p></li>
 </ol>
-</div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="the-configuration-file">
-<h3>The Configuration File<a class="headerlink" href="#the-configuration-file" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">🔗</a></h2>
+<section id="the-configuration-file">
+<h3>The Configuration File<a class="headerlink" href="#the-configuration-file" title="Permalink to this headline">🔗</a></h3>
 <p>Mergify applies rules to your pull requests. To do that, you need to create a
 Mergify configuration in each repository where Mergify is used.</p>
 <p>The configuration file should be created in the root directory of the
 repository and named either <code class="docutils literal notranslate"><span class="pre">.mergify.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">.mergify/config.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">.github/mergify.yml</span></code>.</p>
 <p>As the file name implies, the configuration file format is based on <a class="reference external" href="https://yaml.org/">YAML</a>, a simplistic file format for data. The configuration
 file format is entirely documented in <a class="reference internal" href="../configuration/#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
-</div>
-<div class="section" id="the-rules">
-<h3>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="the-rules">
+<h3>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline">🔗</a></h3>
 <p>The configuration file is composed of a main key named <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 which contains a list of rules.</p>
 <p>Each rule is composed of 3 elements:</p>
@@ -221,9 +221,9 @@ applied.</p></li>
 <li><p>A list of <em>actions</em>. Each action will be applied as soon as the pull request
 matches the <em>conditions</em>.</p></li>
 </ul>
-</div>
-<div class="section" id="a-first-rule">
-<h3>A First Rule<a class="headerlink" href="#a-first-rule" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="a-first-rule">
+<h3>A First Rule<a class="headerlink" href="#a-first-rule" title="Permalink to this headline">🔗</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mergify is event-driven: rules are only executed when pull requests are updated
@@ -257,9 +257,9 @@ use.</p></li>
 </ul>
 <p>Fore more details about the configuration file format, check
 <a class="reference internal" href="../configuration/#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
-</div>
-<div class="section" id="creating-the-configuration-file">
-<h3>Creating the Configuration File<a class="headerlink" href="#creating-the-configuration-file" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="creating-the-configuration-file">
+<h3>Creating the Configuration File<a class="headerlink" href="#creating-the-configuration-file" title="Permalink to this headline">🔗</a></h3>
 <p>You can create your configuration file using your favorite text editor.
 However, writing and testing in the config editor can be easier. Go to <a class="reference external" href="https://dashboard.mergify.io">your
 Mergify dashboard</a> and pick the config editor for
@@ -279,10 +279,10 @@ Mergify configuration. You can merge them by clicking on the merge button.</p>
 <img alt="Mergify config editor PR" class="align-center" src="../_images/config-editor-pr.png" />
 <p>Once your configuration is merged, Mergify will apply it to all your pull
 requests.</p>
-</div>
-</div>
-<div class="section" id="understanding-mergify-check-report">
-<h2>Understanding Mergify Check Report<a class="headerlink" href="#understanding-mergify-check-report" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+</section>
+<section id="understanding-mergify-check-report">
+<h2>Understanding Mergify Check Report<a class="headerlink" href="#understanding-mergify-check-report" title="Permalink to this headline">🔗</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When a pull request changes the configuration of Mergify, the status is
@@ -295,15 +295,15 @@ about the state of the pull request according to the defined rules.</p>
 <img alt="status check" class="align-center" src="../_images/mergify-checks-status.png" />
 <p>When all the criteria of the rules are satisfied, Mergify executes the
 configured actions and e.g. merges the pull request.</p>
-</div>
-<div class="section" id="controlling-mergify-with-commands">
-<h2>Controlling Mergify with Commands<a class="headerlink" href="#controlling-mergify-with-commands" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="controlling-mergify-with-commands">
+<h2>Controlling Mergify with Commands<a class="headerlink" href="#controlling-mergify-with-commands" title="Permalink to this headline">🔗</a></h2>
 <p>Mergify also exposes a set of <a class="reference internal" href="../commands/#commands"><span class="std std-ref">⚙️ Commands</span></a> that you can trigger by commenting on
 the pull request.</p>
 <img alt="status check" class="align-center" src="../_images/mergify-command.png" />
 <p>You can consult the list of those commands on the <a class="reference internal" href="../commands/#commands"><span class="std std-ref">⚙️ Commands</span></a> page.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -319,7 +319,7 @@ the pull request.</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/getting-started.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/getting-started.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

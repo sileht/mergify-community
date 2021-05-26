@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Delete Head Branch Action" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Delete Head Branch Action" name="description" />
 <meta content="mergify, delete, head branch, branch, pull request" name="keywords" />
 <meta content="Delete pull request head branch. Useful to clean pull request once closed." name="summary" />
 <meta content="trash" name="doc:icon" />
@@ -17,13 +18,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -186,8 +186,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="delete-head-branch">
-<span id="delete-head-branch-action"></span><h1>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="delete-head-branch">
+<span id="delete-head-branch-action"></span><h1>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline">🔗</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">delete_head_branch</span></code> action deletes the head branch of the pull request,
 that is the branch which hosts the commits. This only works if the branch is
 stored in the same repository that the pull request target, i.e., if the pull
@@ -197,8 +197,8 @@ request comes from the same repository and not from a fork.</p>
 <p>The action will only happen if and when the pull request is closed or
 merged.</p>
 </div>
-<div class="section" id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -223,11 +223,11 @@ dependent pull requests.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="deleting-merged-branch">
-<h3>✂️ Deleting Merged Branch<a class="headerlink" href="#deleting-merged-branch" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h2>
+<section id="deleting-merged-branch">
+<h3>✂️ Deleting Merged Branch<a class="headerlink" href="#deleting-merged-branch" title="Permalink to this headline">🔗</a></h3>
 <p>It is common to create pull request from the same repository using different
 branches — rather than creating a pull request from a fork. It tends to leave a
 lot of useless branch behind when the pull request is merged.</p>
@@ -240,9 +240,9 @@ lot of useless branch behind when the pull request is merged.</p>
       <span class="nt">delete_head_branch</span><span class="p">:</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -258,7 +258,7 @@ lot of useless branch behind when the pull request is merged.</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/actions/delete_head_branch.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/delete_head_branch.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

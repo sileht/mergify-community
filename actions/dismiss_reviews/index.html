@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Dismiss Review Action" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Dismiss Review Action" name="description" />
 <meta content="mergify, dismiss, review" name="keywords" />
 <meta content="Dismiss previous reviews on a pull request." name="summary" />
 <meta content="user-slash" name="doc:icon" />
@@ -17,13 +18,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -186,14 +186,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="dismiss-reviews">
-<span id="dismiss-reviews-action"></span><h1>dismiss_reviews<a class="headerlink" href="#dismiss-reviews" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="dismiss-reviews">
+<span id="dismiss-reviews-action"></span><h1>dismiss_reviews<a class="headerlink" href="#dismiss-reviews" title="Permalink to this headline">🔗</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">dismiss_reviews</span></code> action removes reviews done by collaborators when the
 pull request is updated. This is especially useful to make sure that a review
 does not stay when the branch is updated (e.g., new commits are added or the
 branch is rebased).</p>
-<div class="section" id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -232,18 +232,18 @@ whose review will be removed.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="removing-stale-reviews">
-<h3>🥶 Removing Stale Reviews<a class="headerlink" href="#removing-stale-reviews" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h2>
+<section id="removing-stale-reviews">
+<h3>🥶 Removing Stale Reviews<a class="headerlink" href="#removing-stale-reviews" title="Permalink to this headline">🔗</a></h3>
 <p>When a pull request is updated, GitHub does not remove the (possibly) outdated
 reviews approvals or changes request. It's a good idea to remove them as soon
 as the pull request gets updated with new commits.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">remove outdated reviews</span>
     <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=master</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=main</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">dismiss_reviews</span><span class="p">:</span>
 </pre></div>
@@ -254,15 +254,15 @@ trusted, even if they update their code:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">remove outdated reviews for non trusted authors</span>
     <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=master</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=main</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author!=@mytrustedteam</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">dismiss_reviews</span><span class="p">:</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -278,7 +278,7 @@ trusted, even if they update their code:</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/actions/dismiss_reviews.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/dismiss_reviews.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

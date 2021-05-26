@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Request Review Action" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Request Review Action" name="description" />
 <meta content="mergify, request, review, pull request" name="keywords" />
 <meta content="Request review from users or teams for a pull request." name="summary" />
 <meta content="binoculars" name="doc:icon" />
@@ -17,13 +18,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -186,16 +186,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="request-reviews">
-<span id="request-reviews-action"></span><h1>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="request-reviews">
+<span id="request-reviews-action"></span><h1>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline">🔗</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>GitHub does not allow to request more 15 users or teams for a review.</p>
+<p>GitHub does not allow to request more than 15 users or teams for a review.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">request_reviews</span></code> action requests reviews from users for the pull
 request.</p>
-<div class="section" id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -232,11 +232,11 @@ Weight must be between 1 and 65535 included.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="flexible-reviewers-assignment">
-<h3>👀 Flexible Reviewers Assignment<a class="headerlink" href="#flexible-reviewers-assignment" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h2>
+<section id="flexible-reviewers-assignment">
+<h3>👀 Flexible Reviewers Assignment<a class="headerlink" href="#flexible-reviewers-assignment" title="Permalink to this headline">🔗</a></h3>
 <p>You can assign people for review based on any criteria you like. A classic is
 to use the name of modified files to do it:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -262,9 +262,9 @@ to use the name of modified files to do it:</p>
           <span class="p p-Indicator">-</span> <span class="s">&quot;@myorg/security-ops&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="random-review-assignment">
-<h3>👘 Random Review Assignment<a class="headerlink" href="#random-review-assignment" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="random-review-assignment">
+<h3>👘 Random Review Assignment<a class="headerlink" href="#random-review-assignment" title="Permalink to this headline">🔗</a></h3>
 <p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
 <div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan<br/>Feature 💪</span></a></div></p>
 <p>It's not fair to ask for the same users or teams to always do the review. You
@@ -303,9 +303,9 @@ assigned, you can add a weight to the user list:</p>
 </div>
 <p>In that case, it's 3 times more likely then the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> will get a pull
 request assigned rather than <code class="docutils literal notranslate"><span class="pre">GuillaumeOj</span></code>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -321,7 +321,7 @@ request assigned rather than <code class="docutils literal notranslate"><span cl
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/actions/request_reviews.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/request_reviews.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Comment Action" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Comment Action" name="description" />
 <meta content="mergify, Comment, pull request" name="keywords" />
 <meta content="Post a comment on a pull request." name="summary" />
 <meta content="comment" name="doc:icon" />
@@ -17,13 +18,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -186,11 +186,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="comment">
-<span id="comment-action"></span><h1>comment<a class="headerlink" href="#comment" title="Permalink to this headline"> 🔗</a></h1>
+  <section id="comment">
+<span id="comment-action"></span><h1>comment<a class="headerlink" href="#comment" title="Permalink to this headline">🔗</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">comment</span></code> action posts a comment to the pull request.</p>
-<div class="section" id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h2>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -221,11 +221,11 @@ itself.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="request-for-action">
-<h3>🤜 Request for Action<a class="headerlink" href="#request-for-action" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h2>
+<section id="request-for-action">
+<h3>🤜 Request for Action<a class="headerlink" href="#request-for-action" title="Permalink to this headline">🔗</a></h3>
 <p>If any event that requires the author of the pull request to edit its pull
 request happen, you could write a rule that says something about it.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -251,9 +251,9 @@ to your contributor:</p>
             <span class="no">Please adjust title before merge.</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="welcoming-your-contributors">
-<h3>💌 Welcoming your Contributors<a class="headerlink" href="#welcoming-your-contributors" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="welcoming-your-contributors">
+<h3>💌 Welcoming your Contributors<a class="headerlink" href="#welcoming-your-contributors" title="Permalink to this headline">🔗</a></h3>
 <p>When somebody that's not part of your team creates a pull requests, it might be
 great to give him a few hints about what to expect next. You could write him a
 little message.</p>
@@ -268,9 +268,9 @@ little message.</p>
               <span class="no">We&#39;re delighted to have you onboard 💘</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="running-ci-pipelines-automatically">
-<h3>💬 Running CI pipelines automatically<a class="headerlink" href="#running-ci-pipelines-automatically" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="running-ci-pipelines-automatically">
+<h3>💬 Running CI pipelines automatically<a class="headerlink" href="#running-ci-pipelines-automatically" title="Permalink to this headline">🔗</a></h3>
 <p>Some continuous integration systems allow you to trigger jobs by commenting on
 the pull request. For example, Microsoft Azure allows that using
 the <a class="reference external" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&amp;tabs=yaml#comment-triggers">/AzurePipelines command</a>.
@@ -288,9 +288,9 @@ request.</p>
         <span class="nt">message</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/AzurePipelines run mypipeline</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -306,7 +306,7 @@ request.</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/actions/comment.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/comment.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Mergify Documentation for Configuration" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Mergify Documentation for Configuration" name="description" />
 <meta content="mergify, configuration" name="keywords" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +16,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/mergify.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mergify.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
 
   
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -179,27 +179,27 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="configuration-file">
-<span id="configuration-file-format"></span><h1>🔖 Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline"> 🔗</a></h1>
-<div class="section" id="file-used">
-<h2>File Used<a class="headerlink" href="#file-used" title="Permalink to this headline"> 🔗</a></h2>
+  <section id="configuration-file">
+<span id="configuration-file-format"></span><h1>🔖 Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">🔗</a></h1>
+<section id="file-used">
+<h2>File Used<a class="headerlink" href="#file-used" title="Permalink to this headline">🔗</a></h2>
 <p>Mergify uses the configuration file that is:</p>
 <ul class="simple">
 <li><p>The file named <code class="docutils literal notranslate"><span class="pre">.mergify.yml</span></code>, or, as a fallback, <code class="docutils literal notranslate"><span class="pre">.mergify/config.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">.github/mergify.yml</span></code>
 from the root directory.</p></li>
-<li><p>In the default repository branch configured on GitHub — usually <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p></li>
+<li><p>In the default repository branch configured on GitHub — usually <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
 </ul>
-</div>
-<div class="section" id="format">
-<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+<section id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">🔗</a></h2>
 <p>Here’s what you need to know about the file format:</p>
 <ul class="simple">
 <li><p>The file format is <a class="reference external" href="http://yaml.org/">YAML</a>.</p></li>
 <li><p>The file main type is a dictionary whose keys are named
 <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> and <code class="docutils literal notranslate"><span class="pre">defaults</span></code>.</p></li>
 </ul>
-<div class="section" id="pull-request-rules">
-<h3>Pull Request Rules<a class="headerlink" href="#pull-request-rules" title="Permalink to this headline"> 🔗</a></h3>
+<section id="pull-request-rules">
+<h3>Pull Request Rules<a class="headerlink" href="#pull-request-rules" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
 <li><p>The value type of the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> is list.</p></li>
 <li><p>Each entry in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> must be a dictionary.</p></li>
@@ -238,17 +238,17 @@ matching pull requests.</p></td>
 <p>The rules are evaluated in the order they are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 and, therefore, the actions are executed in that same order.</p>
 <p>See <a class="reference internal" href="../examples/#examples"><span class="std std-ref">🧪 Example Rules</span></a> for configuration file examples.</p>
-</div>
-<div class="section" id="queue-rules">
-<h3>Queue Rules<a class="headerlink" href="#queue-rules" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="queue-rules">
+<h3>Queue Rules<a class="headerlink" href="#queue-rules" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
 <li><p>The value type of the <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code> is list.</p></li>
 <li><p>Each entry in <code class="docutils literal notranslate"><span class="pre">queue_rules</span></code> must be a dictionary.</p></li>
 </ul>
 <p>See <a class="reference internal" href="../actions/queue/#queue-rules"><span class="std std-ref">Queue Rules</span></a> for the complete list and description of options.</p>
-</div>
-<div class="section" id="defaults">
-<h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+<section id="defaults">
+<h3>Defaults<a class="headerlink" href="#defaults" title="Permalink to this headline">🔗</a></h3>
 <ul class="simple">
 <li><p>The value type of <code class="docutils literal notranslate"><span class="pre">defaults</span></code> is a dictionary.</p></li>
 </ul>
@@ -300,21 +300,22 @@ If the options are defined in <code class="docutils literal notranslate"><span c
         <span class="nt">bot_account</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Autobot</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="data-types">
-<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline"> 🔗</a></h2>
-<div class="section" id="regular-expressions">
-<span id="id1"></span><h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+</section>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">🔗</a></h2>
+<section id="regular-expressions">
+<span id="id1"></span><h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">🔗</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can use <a class="reference external" href="https://regex101.com/">regex101</a> or <a class="reference external" href="http://www.pyregex.com">PyRegex</a> to test your regular expressions.</p>
+<p>You can use <a class="reference external" href="https://regex101.com/">regex101</a>, <a class="reference external" href="http://www.pyregex.com">PyRegex</a> or <a class="reference external" href="https://pythex.org/">Pythex</a> to test your
+regular expressions.</p>
 </div>
 <p>You can use regular expression with matching <a class="reference internal" href="../conditions/#operators"><span class="std std-ref">operators</span></a> in
 your <a class="reference internal" href="../conditions/#conditions"><span class="std std-ref">conditions</span></a> .</p>
 <p>Mergify leverages <a class="reference external" href="https://docs.python.org/3/library/re.html">Python regular expressions</a> to match rules.</p>
-<div class="section" id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h4>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h4>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">add python label if a Python file is modified</span>
     <span class="nt">conditions</span><span class="p">:</span>
@@ -324,19 +325,19 @@ your <a class="reference internal" href="../conditions/#conditions"><span class=
         <span class="nt">add</span><span class="p">:</span>
           <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
 
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for master when the title does not contain “WIP” (ignoring case)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for main when the title does not contain “WIP” (ignoring case)</span>
     <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=master</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=main</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-title~=(?i)wip</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="template">
-<span id="data-type-template"></span><h3>Template<a class="headerlink" href="#template" title="Permalink to this headline"> 🔗</a></h3>
+</section>
+</section>
+<section id="template">
+<span id="data-type-template"></span><h3>Template<a class="headerlink" href="#template" title="Permalink to this headline">🔗</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You need to replace the <code class="docutils literal notranslate"><span class="pre">-</span></code> character by <code class="docutils literal notranslate"><span class="pre">_</span></code> from the <a class="reference internal" href="../conditions/#attributes"><span class="std std-ref">pull request
@@ -358,10 +359,10 @@ can just use this as a regular string.</p>
 </div>
 <p>when used in your configuration file — considering the pull request author
 login is <code class="docutils literal notranslate"><span class="pre">jd</span></code>.</p>
-</div>
-</div>
-<div class="section" id="validation">
-<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline"> 🔗</a></h2>
+</section>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">🔗</a></h2>
 <p>Changes to the configuration file should be done via a pull request in order
 for Mergify to validate it via a GitHub check.</p>
 <p>However, if you want to validate your configuration file before sending a pull
@@ -373,8 +374,8 @@ request, you can use the following command line:</p>
 <form method=post enctype=multipart/form-data action=https://gh.mergify.io/validate target=_blank>
   <input type=file name=data>
   <input type=submit value=Validate>
-</form></div>
-</div>
+</form></section>
+</section>
 
 
           </div>
@@ -390,7 +391,7 @@ request, you can use the following command line:</p>
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/master/docs/source/configuration.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/configuration.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>
