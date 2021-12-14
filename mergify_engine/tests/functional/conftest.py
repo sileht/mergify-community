@@ -245,7 +245,8 @@ def pyvcr_response_filter(response):
         "X-Frame-Options",
         "X-XSS-Protection",
     ]:
-        response["headers"].pop(h, None)
+        pass
+        # response["headers"].pop(h, None)
 
     if "body" in response:
         # Urllib3 vcrpy format

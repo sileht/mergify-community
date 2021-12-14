@@ -800,8 +800,6 @@ class Context(object):
         if sources is None:
             sources = []
         self = cls(repository, pull, sources)
-        await self._ensure_complete()
-        self.pull_request = PullRequest(self)
 
         self.log = daiquiri.getLogger(
             self.__class__.__qualname__,
@@ -835,6 +833,8 @@ class Context(object):
                 else (self.pull.get("mergeable_state", "unknown") or "none")
             ),
         )
+        await self._ensure_complete()
+        self.pull_request = PullRequest(self)
         return self
 
     async def set_summary_check(
@@ -1354,6 +1354,7 @@ class Context(object):
             self._is_data_complete()
             and self._is_background_github_processing_completed()
         ):
+            self.log.error("completing PR!!!")
             self.pull = await self.client.item(
                 f"{self.base_url}/pulls/{self.pull['number']}"
             )
