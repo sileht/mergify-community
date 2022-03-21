@@ -87,6 +87,8 @@ Runs the :ref:`copy action` action.
   * - Example
     - ``@Mergifyio copy stable/3.1 stable/4.0``
 
+.. _squash command:
+
 squash
 ======
 
